@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>491FC279-2EFA-48F9-BD53-BE8DDED7325F</string>
+	<key>IDESourceControlProjectName</key>
+	<string>YTHCOOH_IOS</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>2AF5A8F98EC3BA5936A94E9664B1684106F8A7B5</key>
+		<string>https://github.com/summerzhang1413/QuanIOSAPP.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>YTHCOOH_IOS.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>2AF5A8F98EC3BA5936A94E9664B1684106F8A7B5</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/summerzhang1413/QuanIOSAPP.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>2AF5A8F98EC3BA5936A94E9664B1684106F8A7B5</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>2AF5A8F98EC3BA5936A94E9664B1684106F8A7B5</string>
+			<key>IDESourceControlWCCName</key>
+			<string>QuanIOSAPP</string>
+		</dict>
+	</array>
+</dict>
+</plist>
