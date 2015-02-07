@@ -735,6 +735,7 @@
             }
             [view deleteDeviceSuccess];
             [[self appDelegate].handler.connectingServer loadingAllMyDeviceWithCurrentUserIDAndViewController:nil];
+            [[self appDelegate].handler.connectingServer loadingDeviceRecordWithCurrentDeviceMACWithViewController:nil];
             
         } else if ([operation.responseString rangeOfString:@"fail"].location != NSNotFound) {
             

@@ -25,6 +25,13 @@
 @property (strong, nonatomic) IBOutlet UIButton *lastPage;
 @property (strong, nonatomic) IBOutlet UIButton *nextPage;
 
+@property (weak, nonatomic) IBOutlet UILabel *titleFormaldehyde;
+@property (weak, nonatomic) IBOutlet UILabel *titlePM2;
+@property (weak, nonatomic) IBOutlet UILabel *titlePM10;
+@property (weak, nonatomic) IBOutlet UILabel *titleTemp;
+@property (weak, nonatomic) IBOutlet UILabel *titleHumidity;
+@property (weak, nonatomic) IBOutlet UILabel *titleTVOC;
+
 @property (strong, nonatomic)  UIView *PM2;
 @property (strong, nonatomic)  UIView *PM10;
 @property (strong, nonatomic)  UIView *formaldehyde;

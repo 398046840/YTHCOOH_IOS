@@ -21,6 +21,12 @@
     [super viewDidLoad];
     
     self.WIFIAccounts.text = [self currentWifiSSID];
+    
+    if (![[[NSUserDefaults standardUserDefaults] objectForKey:@"help"] isEqualToString:@"YES"]) {
+        
+        [self performSegueWithIdentifier:@"help" sender:nil];
+        [[NSUserDefaults standardUserDefaults] setObject:@"YES" forKey:@"help"];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

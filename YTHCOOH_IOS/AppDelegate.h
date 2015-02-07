@@ -50,6 +50,7 @@
 //- (void)refreshHomeDataWithDeviceMac:(NSString *)deviceMac;
 - (void)refreshRecordView;
 
+
 - (CGSize)stringSizeWithString:(NSString *)string andWidthLimit:(float)widthLimit andFontSize:(float)fontSize;
 
 

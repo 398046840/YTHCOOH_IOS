@@ -909,6 +909,12 @@
                         <outlet property="location" destination="EA4-fU-q5T" id="bJL-KE-Rnq"/>
                         <outlet property="nextPage" destination="V3y-nx-35R" id="mg8-2t-0fa"/>
                         <outlet property="scrollView" destination="0Qm-9B-tdN" id="d1m-0l-HeV"/>
+                        <outlet property="titleFormaldehyde" destination="zOi-OX-dVo" id="RbT-Jo-gpO"/>
+                        <outlet property="titleHumidity" destination="ze1-UK-gwy" id="Me9-vG-I5J"/>
+                        <outlet property="titlePM10" destination="A3T-6Z-ked" id="MBk-UZ-ORt"/>
+                        <outlet property="titlePM2" destination="1BY-hi-Ykg" id="kca-5s-MXc"/>
+                        <outlet property="titleTVOC" destination="mqb-Li-Oqj" id="y1p-5F-uwY"/>
+                        <outlet property="titleTemp" destination="evI-Xn-72A" id="4gk-xu-eZH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bmB-BN-VBm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1627,6 +1633,20 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cjk-Bu-jYd">
+                                <rect key="frame" x="16" y="292" width="568" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="h0U-MS-USl"/>
+                                </constraints>
+                                <state key="normal" title="帮助" backgroundImage="LoginButton">
+                                    <color key="titleColor" red="0.90297093880000001" green="0.97997658050000003" blue="0.98039215690000003" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="initDevice:" destination="Qc0-JL-9ia" eventType="touchUpInside" id="IfY-w2-VNw"/>
+                                    <segue destination="llb-OB-qmF" kind="show" identifier="help" id="GRb-ge-j7N"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -1636,6 +1656,7 @@
                             <constraint firstItem="EUt-D6-A8o" firstAttribute="leading" secondItem="9t0-er-5uV" secondAttribute="leadingMargin" id="A8T-Lz-kPf"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EYn-ee-NjO" secondAttribute="trailing" constant="7" id="ERR-op-NHU"/>
                             <constraint firstItem="DqW-11-hfc" firstAttribute="top" secondItem="sDc-Sj-F3t" secondAttribute="bottom" constant="8" id="LWx-M5-iaI"/>
+                            <constraint firstItem="cjk-Bu-jYd" firstAttribute="leading" secondItem="9t0-er-5uV" secondAttribute="leading" constant="16" id="NYS-HB-H0q"/>
                             <constraint firstItem="EUt-D6-A8o" firstAttribute="trailing" secondItem="9t0-er-5uV" secondAttribute="trailingMargin" id="TWy-X8-z2m"/>
                             <constraint firstItem="EYn-ee-NjO" firstAttribute="leading" secondItem="c7G-2X-usN" secondAttribute="trailing" constant="8" id="b6q-7G-EwT"/>
                             <constraint firstItem="nmx-rV-BIM" firstAttribute="leading" secondItem="9t0-er-5uV" secondAttribute="leadingMargin" id="dTe-5q-mmx"/>
@@ -1645,7 +1666,9 @@
                             <constraint firstItem="DqW-11-hfc" firstAttribute="trailing" secondItem="9t0-er-5uV" secondAttribute="trailingMargin" id="frb-NT-ddi"/>
                             <constraint firstAttribute="trailingMargin" secondItem="RD0-Eg-HbM" secondAttribute="trailing" constant="7" id="ixZ-w6-vJs"/>
                             <constraint firstItem="RD0-Eg-HbM" firstAttribute="leading" secondItem="Txa-Hq-Fxm" secondAttribute="trailing" constant="8" id="q8t-TN-B1n"/>
+                            <constraint firstItem="cjk-Bu-jYd" firstAttribute="top" secondItem="nmx-rV-BIM" secondAttribute="bottom" constant="8" id="rrg-BZ-lAy"/>
                             <constraint firstItem="EUt-D6-A8o" firstAttribute="top" secondItem="DqW-11-hfc" secondAttribute="bottom" constant="8" id="rvk-sw-Fgn"/>
+                            <constraint firstAttribute="trailing" secondItem="cjk-Bu-jYd" secondAttribute="trailing" constant="16" id="tZh-Mj-phd"/>
                             <constraint firstItem="c7G-2X-usN" firstAttribute="top" secondItem="sDc-Sj-F3t" secondAttribute="bottom" constant="19" id="ttQ-v2-eFX"/>
                             <constraint firstItem="nmx-rV-BIM" firstAttribute="top" secondItem="EUt-D6-A8o" secondAttribute="bottom" constant="72" id="veo-ke-DZi"/>
                             <constraint firstItem="DqW-11-hfc" firstAttribute="leading" secondItem="9t0-er-5uV" secondAttribute="leadingMargin" id="wNL-Hp-YXA"/>
@@ -1660,6 +1683,41 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Xgb-q0-42Z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="7128" y="-2368"/>
+        </scene>
+        <!--帮助-->
+        <scene sceneID="M0A-FX-ksc">
+            <objects>
+                <viewController id="llb-OB-qmF" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GtU-2F-eqh"/>
+                        <viewControllerLayoutGuide type="bottom" id="tCF-xR-SVM"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="btc-Dp-0Py">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nF-23-ozI">
+                                <rect key="frame" x="16" y="87" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="42" id="0g9-dy-DBc"/>
+                                    <constraint firstAttribute="height" constant="21" id="v2z-Ym-ru2"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="1nF-23-ozI" firstAttribute="leading" secondItem="btc-Dp-0Py" secondAttribute="leading" constant="16" id="dMJ-LD-koq"/>
+                            <constraint firstItem="1nF-23-ozI" firstAttribute="top" secondItem="GtU-2F-eqh" secondAttribute="bottom" constant="23" id="pGg-xs-1lM"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="帮助" id="8fM-En-Wfq"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wTM-FC-9rb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7851" y="-2368"/>
         </scene>
         <!--添加已注册设备-->
         <scene sceneID="2oR-2W-Pm1">

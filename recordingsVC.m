@@ -47,10 +47,8 @@
     self.scrollView.frame = CGRectMake(self.scrollView.frame.origin.x, self.scrollView.frame.origin.y,self.scrollView.frame.size.width, [UIScreen mainScreen].bounds.size.height - 44 - 64 - self.scrollView.frame.origin.y - 5);
     self.scrollView.contentSize = CGSizeMake(1055, 600);
     
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:kCURRENTDEVICEMAC] == nil) {
+    if (!([[NSUserDefaults standardUserDefaults] objectForKey:kCURRENTDEVICEMAC] == nil)) {
         
-        [self.view makeToast:@"您还没选择设备,请先选择" duration:2.0 position:CSToastPositionCenter];
-    } else {
         [[self appDelegate].handler.connectingServer loadingDeviceRecordWithCurrentDeviceMACWithViewController:self];
     }
     
@@ -76,13 +74,87 @@
 {
     if ([[NSUserDefaults standardUserDefaults] objectForKey:kCURRENTDEVICEMAC] == nil) {
         
-        
+        [self.view makeToast:@"您还没选择设备,请先选择" duration:2.0 position:CSToastPositionCenter];
+        [self setToNil];
+        [self.navigationItem.rightBarButtonItem setEnabled:NO];
+        [self.lastPage setEnabled:NO];
+        [self.nextPage setEnabled:NO];
     }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)setToNil
+{
+    
+    [self.currentFormaldehyde setHidden:NO];
+    [self.currentPM2 setHidden:NO];
+    [self.currentPM10 setHidden:NO];
+    [self.currentTemperature setHidden:NO];
+    [self.currentHumidity setHidden:NO];
+    [self.currentTVOC setHidden:NO];
+    
+    [self.titleFormaldehyde setHidden:NO];
+    [self.titlePM2 setHidden:NO];
+    [self.titlePM10 setHidden:NO];
+    [self.titleTemp setHidden:NO];
+    [self.titleHumidity setHidden:NO];
+    [self.titleTVOC setHidden:NO];
+    
+    self.location.text = @"----";
+    self.location.textColor = [UIColor blackColor];
+    self.currentFormaldehyde.text = @"----";
+    self.currentFormaldehyde.textColor = [UIColor blackColor];
+    self.currentPM2.text = @"----";
+    self.currentPM2.textColor = [UIColor blackColor];
+    self.currentPM10.text = @"----";
+    self.currentPM10.textColor = [UIColor blackColor];
+    self.currentTemperature.text =@"----";
+    self.currentTemperature.textColor = [UIColor blackColor];
+    self.currentHumidity.text = @"----";
+    self.currentHumidity.textColor = [UIColor blackColor];
+    self.currentTVOC.text = @"----";
+    self.currentTVOC.textColor = [UIColor blackColor];
+    
+    [self.formaldehyde setHidden:YES];
+    [self.PM2 setHidden:YES];
+    [self.PM10 setHidden:YES];
+    [self.temperature setHidden:YES];
+    [self.humidity setHidden:YES];
+    [self.TVOC setHidden:YES];
+    
+    if (self.formaldehydeChart != nil) {
+        
+        [self.formaldehydeChart removeFromSuperview];
+    }
+    
+    if (self.PM2Chart != nil) {
+        
+        [self.PM2Chart removeFromSuperview];
+    }
+    
+    if (self.PM10Chart != nil) {
+        
+        [self.PM10Chart removeFromSuperview];
+    }
+    
+    if (self.temperatureChart != nil) {
+        
+        [self.temperatureChart removeFromSuperview];
+    }
+    
+    if (self.humidityChart != nil) {
+        
+        [self.humidityChart removeFromSuperview];
+    }
+    
+    if (self.TVOCChart != nil) {
+        
+        [self.TVOCChart removeFromSuperview];
+    }
 }
 
 - (IBAction)lastPage:(id)sender {
@@ -243,68 +315,98 @@
     
     if ([[self appDelegate].handler.recordDataDic objectForKey:kFORMALDEHYDE] != nil) {
         
+        [self.currentFormaldehyde setHidden:NO];
+        [self.titleFormaldehyde setHidden:NO];
+        
         self.currentFormaldehyde.text = [NSString stringWithFormat:@"%@mg/m³",[[[[self appDelegate].handler.recordDataDic objectForKey:kFORMALDEHYDE] objectAtIndex:0] objectForKey:@"Value"]];
         self.currentFormaldehyde.textColor = [[self appDelegate].handler.connectingServer whatTextColorWithValue:[[[[self appDelegate].handler.recordDataDic objectForKey:kFORMALDEHYDE] objectAtIndex:0] objectForKey:@"Value"] inType:kFORMALDEHYDE];
     } else {
         
-        self.currentFormaldehyde.text = @"----mg/m³";
-        self.currentFormaldehyde.textColor = [UIColor blackColor];
+//        self.currentFormaldehyde.text = @"----mg/m³";
+//        self.currentFormaldehyde.textColor = [UIColor blackColor];
+        [self.currentFormaldehyde setHidden:YES];
+        [self.titleFormaldehyde setHidden:YES];
         
     }
     
     if ([[self appDelegate].handler.recordDataDic objectForKey:kPM] != nil) {
         
+        [self.currentPM2 setHidden:NO];
+        [self.titlePM2 setHidden:NO];
+        
         self.currentPM2.text = [NSString stringWithFormat:@"%@ug/m³",[[[[self appDelegate].handler.recordDataDic objectForKey:kPM] objectAtIndex:0] objectForKey:@"Value"]];
         self.currentPM2.textColor = [[self appDelegate].handler.connectingServer whatTextColorWithValue:[[[[self appDelegate].handler.recordDataDic objectForKey:kPM] objectAtIndex:0] objectForKey:@"Value"] inType:kPM];
     } else {
         
-        self.currentPM2.text = @"----ug/m³";
-        self.currentPM2.textColor = [UIColor blackColor];
+//        self.currentPM2.text = @"----ug/m³";
+//        self.currentPM2.textColor = [UIColor blackColor];
+        [self.currentPM2 setHidden:YES];
+        [self.titlePM2 setHidden:YES];
         
     }
     
     if ([[self appDelegate].handler.recordDataDic objectForKey:kPM10] != nil) {
         
+        [self.currentPM10 setHidden:NO];
+        [self.titlePM10 setHidden:NO];
+        
         self.currentPM10.text = [NSString stringWithFormat:@"%@ug/m³",[[[[self appDelegate].handler.recordDataDic objectForKey:kPM10] objectAtIndex:0] objectForKey:@"Value"]];
         self.currentPM10.textColor = [[self appDelegate].handler.connectingServer whatTextColorWithValue:[[[[self appDelegate].handler.recordDataDic objectForKey:kPM10] objectAtIndex:0] objectForKey:@"Value"] inType:kPM10];
     } else {
         
-        self.currentPM10.text = @"----mg/m³";
-        self.currentPM10.textColor = [UIColor blackColor];
+//        self.currentPM10.text = @"----mg/m³";
+//        self.currentPM10.textColor = [UIColor blackColor];
+        [self.currentPM10 setHidden:YES];
+        [self.titlePM10 setHidden:YES];
         
     }
     
     if ([[self appDelegate].handler.recordDataDic objectForKey:kTEMPERATURE] != nil) {
         
+        [self.currentTemperature setHidden:NO];
+        [self.titleTemp setHidden:NO];
+        
         self.currentTemperature.text = [NSString stringWithFormat:@"%@°",[[[[self appDelegate].handler.recordDataDic objectForKey:kTEMPERATURE] objectAtIndex:0] objectForKey:@"Value"]];
         self.currentTemperature.textColor = [[self appDelegate].handler.connectingServer whatTextColorWithValue:[[[[self appDelegate].handler.recordDataDic objectForKey:kTEMPERATURE] objectAtIndex:0] objectForKey:@"Value"] inType:kTEMPERATURE];
     } else {
         
-        self.currentTemperature.text = @"----°";
-        self.currentTemperature.textColor = [UIColor blackColor];
+//        self.currentTemperature.text = @"----°";
+//        self.currentTemperature.textColor = [UIColor blackColor];
+        [self.currentTemperature setHidden:YES];
+        [self.titleTemp setHidden:YES];
         
     }
     
     
     if ([[self appDelegate].handler.recordDataDic objectForKey:kHUMIDITY] != nil) {
         
+        [self.currentHumidity setHidden:NO];
+        [self.titleHumidity setHidden:NO];
+        
         self.currentHumidity.text = [NSString stringWithFormat:@"%@%%",[[[[self appDelegate].handler.recordDataDic objectForKey:kHUMIDITY] objectAtIndex:0] objectForKey:@"Value"]];
         self.currentHumidity.textColor = [[self appDelegate].handler.connectingServer whatTextColorWithValue:[[[[self appDelegate].handler.recordDataDic objectForKey:kHUMIDITY] objectAtIndex:0] objectForKey:@"Value"] inType:kHUMIDITY];
     } else {
         
-        self.currentHumidity.text = @"----%";
-        self.currentHumidity.textColor = [UIColor blackColor];
+//        self.currentHumidity.text = @"----%";
+//        self.currentHumidity.textColor = [UIColor blackColor];
+        [self.currentHumidity setHidden:YES];
+        [self.titleHumidity setHidden:YES];
         
     }
     
     if ([[self appDelegate].handler.recordDataDic objectForKey:KVOC] != nil) {
         
+        [self.currentTVOC setHidden:NO];
+        [self.titleTVOC setHidden:NO];
+        
         self.currentTVOC.text = [NSString stringWithFormat:@"%@mg/m³",[[[[self appDelegate].handler.recordDataDic objectForKey:KVOC] objectAtIndex:0] objectForKey:@"Value"]];
         self.currentTVOC.textColor = [[self appDelegate].handler.connectingServer whatTextColorWithValue:[[[[self appDelegate].handler.recordDataDic objectForKey:KVOC] objectAtIndex:0] objectForKey:@"Value"] inType:KVOC];
     } else {
         
-        self.currentTVOC.text = @"----mg/m³";
-        self.currentTVOC.textColor = [UIColor blackColor];
+//        self.currentTVOC.text = @"----mg/m³";
+//        self.currentTVOC.textColor = [UIColor blackColor];
+        [self.currentTVOC setHidden:YES];
+        [self.titleTVOC setHidden:YES];
         
     }
     

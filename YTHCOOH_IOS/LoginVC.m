@@ -151,13 +151,13 @@
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",self.savePassword.on == YES ? 1 : 0] forKey:@"SavePassword"];
     [[NSUserDefaults standardUserDefaults] setObject:[NSString stringWithFormat:@"%d",self.autoLogin.on == YES ? 1 : 0] forKey:@"AutoLogin"];
     
-    if (self.savePassword.on == YES) {
+  //  if (self.savePassword.on == YES) {
         [[NSUserDefaults standardUserDefaults] setObject:self.userID.text forKey:@"UserID"];
         [[NSUserDefaults standardUserDefaults] setObject:self.userPassword.text forKey:@"UserPassword"];
-    } else {
-        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"UserID"];
-        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"UserPassword"];
-    }
+  //  } else {
+//        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"UserID"];
+//        [[NSUserDefaults standardUserDefaults] setObject:@"" forKey:@"UserPassword"];
+ //   }
 }
 
 - (void)loginSuccess
