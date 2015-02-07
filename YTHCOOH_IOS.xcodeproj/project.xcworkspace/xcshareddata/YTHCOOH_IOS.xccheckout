@@ -12,20 +12,24 @@
 	<dict>
 		<key>2AF5A8F98EC3BA5936A94E9664B1684106F8A7B5</key>
 		<string>https://github.com/summerzhang1413/QuanIOSAPP.git</string>
+		<key>88A3C173442EF5A259B4B3746433E0223934D5D1</key>
+		<string>https://github.com/398046840/YTHCOOH_IOS.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
 	<string>YTHCOOH_IOS.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>2AF5A8F98EC3BA5936A94E9664B1684106F8A7B5</key>
+		<string>../../../QuanIOSAPP</string>
+		<key>88A3C173442EF5A259B4B3746433E0223934D5D1</key>
 		<string>../..</string>
 	</dict>
 	<key>IDESourceControlProjectURL</key>
-	<string>https://github.com/summerzhang1413/QuanIOSAPP.git</string>
+	<string>https://github.com/398046840/YTHCOOH_IOS.git</string>
 	<key>IDESourceControlProjectVersion</key>
 	<integer>111</integer>
 	<key>IDESourceControlProjectWCCIdentifier</key>
-	<string>2AF5A8F98EC3BA5936A94E9664B1684106F8A7B5</string>
+	<string>88A3C173442EF5A259B4B3746433E0223934D5D1</string>
 	<key>IDESourceControlProjectWCConfigurations</key>
 	<array>
 		<dict>
@@ -35,6 +39,14 @@
 			<string>2AF5A8F98EC3BA5936A94E9664B1684106F8A7B5</string>
 			<key>IDESourceControlWCCName</key>
 			<string>QuanIOSAPP</string>
+		</dict>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>88A3C173442EF5A259B4B3746433E0223934D5D1</string>
+			<key>IDESourceControlWCCName</key>
+			<string>YTHCOOH_IOS</string>
 		</dict>
 	</array>
 </dict>

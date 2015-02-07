@@ -7,6 +7,9 @@
 //
 
 #import "AddUnregisteredDevice.h"
+#import "GCDAsyncSocket.h"
+#import <SystemConfiguration/CaptiveNetwork.h>
+#import "AppDelegate.h"
 
 @interface AddUnregisteredDevice ()
 
@@ -16,12 +19,18 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.WIFIAccounts.text = [self currentWifiSSID];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (AppDelegate *)appDelegate
+{
+    return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
 /*
@@ -35,5 +44,58 @@
 */
 
 - (IBAction)initDevice:(id)sender {
+    
+    GCDAsyncSocket  *socket = [[GCDAsyncSocket alloc] initWithDelegate:self delegateQueue:dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)];
+    
+    NSError *err ;
+    [socket connectToHost:kSOCKETHOST onPort:KSOCKETPORT error:&err];
+    
+    
+    NSString *dataStr = [NSString stringWithFormat:@"#$&60i1%@|%@|%@|~~~~~~~~~~^`",self.WIFIAccounts,self.WIFIPassword,[self appDelegate].handler.currentUserID];
+    
+    for (int i = (int)[dataStr length]; i < 61; i++ ) {
+        
+        [dataStr stringByReplacingOccurrencesOfString:@"^`" withString:@"~^`"];
+    }
+    
+    NSData* aData= [dataStr dataUsingEncoding: NSUTF8StringEncoding];
+    
+     [socket writeData:aData withTimeout:-1 tag:0];
+    [socket readDataWithTimeout:-1 tag:0];
+    
+    
+}
+
+- (NSString *)currentWifiSSID {
+    // Does not work on the simulator.
+    NSString *ssid = nil;
+    NSArray *ifs = (__bridge_transfer id)CNCopySupportedInterfaces();
+    for (NSString *ifnam in ifs) {
+        NSDictionary *info = (__bridge_transfer id)CNCopyCurrentNetworkInfo((__bridge CFStringRef)ifnam);
+        if (info[@"SSID"]) {
+            ssid = info[@"SSID"];
+        }
+    }
+    return ssid;
+}
+
+#pragma GCDSocketDelegate
+- (void)socket:(GCDAsyncSocket *)sock didConnectToHost:(NSString *)host port:(uint16_t)port
+{
+    [sock readDataWithTimeout:-1 tag:0];
+}
+
+- (void)socket:(GCDAsyncSocket *)sock didReadData:(NSData *)data withTag:(long)tag
+{
+    NSString* aStr = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
+    
+    NSLog(@"===%@",aStr);
+    [[self appDelegate] showAlertView:aStr];
+     [sock readDataWithTimeout:-1 tag:0];
+}
+
+- (void)socket:(GCDAsyncSocket *)sock didWriteDataWithTag:(long)tag
+{
+    
 }
 @end
