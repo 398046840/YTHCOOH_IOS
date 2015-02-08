@@ -142,7 +142,7 @@
     [MMProgressHUD setPresentationStyle:MMProgressHUDPresentationStyleNone];
     [MMProgressHUD showWithTitle:@"登录中..."];
     
-    [self loginSuccess];
+//    [self loginSuccess];
     
 }
 

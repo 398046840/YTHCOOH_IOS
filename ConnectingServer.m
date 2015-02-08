@@ -598,6 +598,11 @@
                 [tempDic setObject:[self whatTextColorWithValue:[responseArray objectAtIndex:4] inType:kHUMIDITY] forKey:@"TextColor"];
                 [finalArray addObject:tempDic];
                 
+//                tempDic = [[NSMutableDictionary alloc] init];
+//                [tempDic setObject:@"PM10" forKey:@"Project"];
+//                [tempDic setObject:[NSString stringWithFormat:@"%@",[responseArray objectAtIndex:8]] forKey:@"PM10"];
+//                [finalArray addObject:tempDic];
+                
                 
             } else if ([type isEqualToString:@"YT631"]) {
                 
@@ -683,6 +688,16 @@
                 [tempDic setObject:[NSString stringWithFormat:@"%@",[self whatColorWithValue:[responseArray objectAtIndex:4] inType:kHUMIDITY]] forKey:@"Color"];
                 [tempDic setObject:[self whatTextColorWithValue:[responseArray objectAtIndex:4] inType:kHUMIDITY] forKey:@"TextColor"];
                 [finalArray addObject:tempDic];
+                
+                
+            }
+            
+            if ([operation.responseString rangeOfString:@"s"].location != NSNotFound) {
+                
+                [self appDelegate].homeVC.PM10Monitor = NO;
+            } else if (([operation.responseString rangeOfString:@"d"].location != NSNotFound) || ([operation.responseString rangeOfString:@"a"].location != NSNotFound)) {
+                
+                [self appDelegate].homeVC.PM10Monitor = YES;
             }
             
             [self appDelegate].handler.homeData = finalArray;
@@ -794,6 +809,59 @@
     
     [engine enqueueOperation:op];
 }
+
+- (void)ControlPM10MonitorWithFlag:(BOOL)flag andViewController:(HomeVC *)viewController
+{
+    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidstart_pm_listenner.jsp"];
+    
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    if (flag) {
+        
+        [param setValue:@"s" forKey:@"param1"];
+    } else {
+        [param setValue:@"d" forKey:@"param1"];
+    }
+    
+    
+
+    
+    MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
+    
+    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        
+        NSLog(@"%@",operation.responseString);
+        
+        if ([operation.responseString rangeOfString:@"s"].location != NSNotFound ) {
+            
+            [viewController launchPM10Success];
+           
+        
+            
+        } else  if ([operation.responseString rangeOfString:@"d"].location != NSNotFound  ){
+            
+          
+            [viewController shutDownPM10Success];
+        }
+        
+        
+        
+    } errorHandler:^(MKNetworkOperation *errorOP, NSError *err) {
+        
+        if (flag) {
+            
+            [viewController launchPM10Fail];
+        } else {
+            [viewController shutDownPM10Fail];
+        }
+        
+    }];
+    
+    [engine enqueueOperation:op];
+}
+
 
 - (void)getAirconditionAllStudyFlagWithCurrentDeviceMacInView:(AirConditionRemoteVC *)view
 {

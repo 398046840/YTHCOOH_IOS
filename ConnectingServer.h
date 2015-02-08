@@ -31,6 +31,9 @@
 - (void)deleteMyDeviceWithDeviceMAC:(NSString *)deviceMac inView:(UIViewController *)view;
 //添加已初始化设备
 - (void)addRegisteredDeviceWithCurrentUserIDAndPassword:(NSString *)passWord andDeviceMac:(NSString *)deviceMac inView:(UIViewController *)view;
+//PM10监听
+- (void)ControlPM10MonitorWithFlag:(BOOL)flag andViewController:(UIViewController *)viewController;
+
 
 - (UIColor *)whatTextColorWithValue:(NSString *)value inType:(NSString *)type;
 

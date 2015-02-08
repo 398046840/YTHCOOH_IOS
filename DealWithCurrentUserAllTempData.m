@@ -75,6 +75,7 @@
 - (void)refreshHomeView
 {
     [[self appDelegate].homeVC.tableView reloadData];
+    [[self appDelegate].homeVC refreshPM10Monitor];
 }
 
 - (void)setHomeDataToNil

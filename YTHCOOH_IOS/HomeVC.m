@@ -24,16 +24,16 @@
     
     [self appDelegate].homeVC = self;
     
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"LoginButton"] forBarMetrics:UIBarMetricsDefault];
-//    
-//    if ([UIDevice currentDevice].systemVersion.floatValue < 7.0) {
-//        [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:115.0/255.0 green:219.0/255.0 blue:17.0/255.0 alpha:1.0]];
-//    }
+    //    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"LoginButton"] forBarMetrics:UIBarMetricsDefault];
+    //
+    //    if ([UIDevice currentDevice].systemVersion.floatValue < 7.0) {
+    //        [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:115.0/255.0 green:219.0/255.0 blue:17.0/255.0 alpha:1.0]];
+    //    }
     
     if ([self appDelegate].handler.homeData == nil) {
         [[self appDelegate].handler setHomeDataToNil];
     }
-
+    
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:kCURRENTDEVICEMAC] != nil) {
         [[self appDelegate].handler refreshHomeDataWithCurrentDeviceMac];
@@ -42,13 +42,13 @@
     }
     
     
-//    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-//    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
-//    [refresh addTarget:self action:@selector(refreshCurrentDeviceDetail) forControlEvents:UIControlEventValueChanged];
-//    self.refreshControl = refresh;
+    //    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    //    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
+    //    [refresh addTarget:self action:@selector(refreshCurrentDeviceDetail) forControlEvents:UIControlEventValueChanged];
+    //    self.refreshControl = refresh;
     
-//    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"启动" style:UIBarButtonItemStyleDone target:self action:@selector(launchPM10)];
-//    [self.navigationController.navigationBar.]
+    //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"启动" style:UIBarButtonItemStyleDone target:self action:@selector(launchPM10)];
+    //    [self.navigationController.navigationBar.]
     
 }
 
@@ -64,6 +64,7 @@
     if ([[[NSUserDefaults standardUserDefaults] objectForKey:kCURRENTDEVICETYPE] isEqualToString:@"YT133"]) {
         
         self.navigationItem.rightBarButtonItem = nil;
+        
         
     } else {
         
@@ -85,8 +86,8 @@
 //- (void)refreshCurrentDeviceDetail
 //{
 //    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"加载中..."];
-//    
-//    
+//
+//
 //    [self performSelector:@selector(refreshComplete) withObject:nil afterDelay:3];
 //}
 
@@ -98,7 +99,44 @@
 
 - (void)launchPM10
 {
+    if ([self.navigationItem.rightBarButtonItem.title isEqualToString:@"启动"]) {
+        
+        [MMProgressHUD showWithTitle:@"正在开启PM10监听..."];
+        [[self appDelegate].handler.connectingServer ControlPM10MonitorWithFlag:YES andViewController:self];
+    } else if ([self.navigationItem.rightBarButtonItem.title isEqualToString:@"关闭"]) {
+        [MMProgressHUD showWithTitle:@"正在关闭PM10监听..."];
+        [[self appDelegate].handler.connectingServer ControlPM10MonitorWithFlag:NO andViewController:self];
+    }
+}
+
+- (void)refreshPM10Monitor
+{
+    if (self.PM10Monitor) {
+        
+        self.navigationItem.rightBarButtonItem.title = @"关闭";
+        
+    } else  {
+        
+        self.navigationItem.rightBarButtonItem.title = @"启动";
+    }
     
+}
+
+- (void)launchPM10Success
+{
+    [MMProgressHUD dismissWithSuccess:@"成功开启PM10监听"];
+}
+- (void)launchPM10Fail
+{
+    [MMProgressHUD dismissWithSuccess:@"开启PM10监听失败"];
+}
+- (void)shutDownPM10Success
+{
+    [MMProgressHUD dismissWithSuccess:@"成功关闭PM10监听"];
+}
+- (void)shutDownPM10Fail
+{
+    [MMProgressHUD dismissWithSuccess:@"关闭PM10监听失败"];
 }
 
 #pragma mark - Table view data source
@@ -137,10 +175,10 @@
             cell.prompt.attributedText = att;
             
         }
-
         
         
-
+        
+        
         
         
         
@@ -179,7 +217,7 @@
             cell.level = nil;
             [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
             
-
+            
             
         } else {
             
@@ -192,15 +230,15 @@
                 
                 
             } else {
-            
-            cell.levelColor.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 30 - 80, 7.5, 80, 40);
-            cell.level.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 35 - 70, 17.5, 70, 20);
-            [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
-            
-            cell.levelColor.image = [UIImage imageNamed:[[[self appDelegate].handler.homeData objectAtIndex:(indexPath.row )] objectForKey:@"Color"]];
-            cell.level.text = [[[self appDelegate].handler.homeData objectAtIndex:(indexPath.row )] objectForKey:@"Level"];
-            CGSize levelSize = [cell.level.text sizeWithFont:[UIFont systemFontOfSize:17]];
-            cell.level.frame = CGRectMake(cell.levelColor.frame.origin.x + cell.levelColor.frame.size.width / 2 - levelSize.width / 2 , 17, levelSize.width, levelSize.height);
+                
+                cell.levelColor.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 30 - 80, 7.5, 80, 40);
+                cell.level.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 35 - 70, 17.5, 70, 20);
+                [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
+                
+                cell.levelColor.image = [UIImage imageNamed:[[[self appDelegate].handler.homeData objectAtIndex:(indexPath.row )] objectForKey:@"Color"]];
+                cell.level.text = [[[self appDelegate].handler.homeData objectAtIndex:(indexPath.row )] objectForKey:@"Level"];
+                CGSize levelSize = [cell.level.text sizeWithFont:[UIFont systemFontOfSize:17]];
+                cell.level.frame = CGRectMake(cell.levelColor.frame.origin.x + cell.levelColor.frame.size.width / 2 - levelSize.width / 2 , 17, levelSize.width, levelSize.height);
             }
             
             cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
@@ -254,46 +292,46 @@
 //- (void)setHomeDataToNil
 //{
 //    self.homeData = [[NSMutableArray alloc] init];
-//    
+//
 //    NSMutableDictionary *location = [[NSMutableDictionary alloc] init];
 //    [location setObject:@"您当前还没选择设备,请点击选择或添加设备" forKey:@"Location"];
 //    [self.homeData addObject:location];
-//    
+//
 //    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
 //    [dic setObject:@"PM2.5:" forKey:@"Project"];
 //    [dic setObject:@"----ug/m³" forKey:@"Value"];
 //    [dic setObject:@"------" forKey:@"Level"];
 //    [dic setObject:@"LevelColor_Green" forKey:@"Color"];
 //    [self.homeData addObject:dic];
-//    
+//
 //    NSMutableDictionary *dic1 = [[NSMutableDictionary alloc] init];
 //    [dic1 setObject:@"PM10:" forKey:@"Project"];
 //    [dic1 setObject:@"----ug/m³" forKey:@"Value"];
 //    [dic1 setObject:@"------" forKey:@"Level"];
 //    [dic1 setObject:@"LevelColor_Green" forKey:@"Color"];
 //    [self.homeData addObject:dic1];
-//    
+//
 //    NSMutableDictionary *dic2 = [[NSMutableDictionary alloc] init];
 //    [dic2 setObject:@"甲醛:" forKey:@"Project"];
 //    [dic2 setObject:@"----mg/m³" forKey:@"Value"];
 //    [dic2 setObject:@"------" forKey:@"Level"];
 //    [dic2 setObject:@"LevelColor_Green" forKey:@"Color"];
 //    [self.homeData addObject:dic2];
-//    
+//
 //    NSMutableDictionary *dic3 = [[NSMutableDictionary alloc] init];
 //    [dic3 setObject:@"TOVC:" forKey:@"Project"];
 //    [dic3 setObject:@"----ug/m³" forKey:@"Value"];
 //    [dic3 setObject:@"------" forKey:@"Level"];
 //    [dic3 setObject:@"LevelColor_Green" forKey:@"Color"];
 //    [self.homeData addObject:dic3];
-//    
+//
 //    NSMutableDictionary *dic4 = [[NSMutableDictionary alloc] init];
 //    [dic4 setObject:@"温度:" forKey:@"Project"];
 //    [dic4 setObject:@"----℃" forKey:@"Value"];
 //    [dic4 setObject:@"------" forKey:@"Level"];
 //    [dic4 setObject:@"LevelColor_Green" forKey:@"Color"];
 //    [self.homeData addObject:dic4];
-//    
+//
 //    NSMutableDictionary *dic5 = [[NSMutableDictionary alloc] init];
 //    [dic5 setObject:@"湿度:" forKey:@"Project"];
 //    [dic5 setObject:@"----%" forKey:@"Value"];
@@ -343,7 +381,7 @@
     UIViewController *viewController = segue.destinationViewController;
     [viewController setHidesBottomBarWhenPushed:YES];
     
-     if ([segue.identifier isEqualToString:@"ShowPM"]) {
+    if ([segue.identifier isEqualToString:@"ShowPM"]) {
         HomeDetailTypePMVC *viewController = segue.destinationViewController;
         [viewController setHidesBottomBarWhenPushed:YES];
         viewController.dataDic = sender;

@@ -25,6 +25,8 @@
 
 @property (nonatomic, strong) ConnectingServer *connectingServer;
 
+
+
 - (void)refreshMyDevicesDataWithDic:(NSMutableArray *)dic;
 
 - (void)refreshHomeDataWithCurrentDeviceMac;

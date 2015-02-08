@@ -11,8 +11,12 @@
 @interface HomeVC : UITableViewController
 
 @property (nonatomic, strong) NSMutableArray *homeData;
+@property (nonatomic,assign) BOOL PM10Monitor;
 
 
-//- (void)setHomeDataToNil;
-
+- (void)refreshPM10Monitor;
+- (void)launchPM10Success;
+- (void)launchPM10Fail;
+- (void)shutDownPM10Success;
+- (void)shutDownPM10Fail;
 @end
