@@ -16,4 +16,5 @@
 
 @property (nonatomic, strong) UIImageView *levelColor;
 @property (nonatomic, strong) UILabel *level;
+@property (nonatomic, strong) UIImageView *bg;
 @end

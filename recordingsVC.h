@@ -14,13 +14,13 @@
 
 @property (strong, nonatomic) IBOutlet UIImageView *BG1;
 @property (strong, nonatomic) IBOutlet UILabel *location;
-@property (strong, nonatomic) IBOutlet UILabel *currentDate;
-@property (strong, nonatomic) IBOutlet UILabel *currentFormaldehyde;
-@property (strong, nonatomic) IBOutlet UILabel *currentPM2;
-@property (strong, nonatomic) IBOutlet UILabel *currentPM10;
-@property (strong, nonatomic) IBOutlet UILabel *currentTemperature;
-@property (strong, nonatomic) IBOutlet UILabel *currentHumidity;
-@property (strong, nonatomic) IBOutlet UILabel *currentTVOC;
+
+@property (strong, nonatomic)  UILabel *currentFormaldehyde;
+@property (strong, nonatomic)  UILabel *currentPM2;
+@property (strong, nonatomic)  UILabel *currentPM10;
+@property (strong, nonatomic)  UILabel *currentTemperature;
+@property (strong, nonatomic)  UILabel *currentHumidity;
+@property (strong, nonatomic)  UILabel *currentTVOC;
 
 @property (strong, nonatomic) IBOutlet UIButton *lastPage;
 @property (strong, nonatomic) IBOutlet UIButton *nextPage;

@@ -153,7 +153,20 @@
         return cell;
     } else {
         
+       
+        
         HomeTableDataCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CellTypeData" forIndexPath:indexPath];
+        
+//        if (cell.bg == nil) {
+//            cell.bg = [[UIImageView alloc] init];
+//            cell.bg.backgroundColor = [UIColor whiteColor];
+//            cell.bg.frame = CGRectMake(5, 2, [UIScreen mainScreen].bounds.size.width - 10, 55 - 4);
+//            [cell addSubview:cell.bg];
+//            
+//            [cell sendSubviewToBack:cell.bg];
+//        }
+        
+        
         cell.project.text = [[[self appDelegate].handler.homeData objectAtIndex:indexPath.row] objectForKey:@"Project"];
         
         cell.value.text = [[[self appDelegate].handler.homeData objectAtIndex:indexPath.row] objectForKey:@"Value"];
@@ -176,6 +189,8 @@
             cell.level.backgroundColor = [UIColor clearColor];
             [cell addSubview:cell.level];
         }
+        
+        
         
         if (indexPath.row >= ([self appDelegate].handler.homeData.count - 2)) {
             cell.accessoryType = UITableViewCellAccessoryNone;
@@ -201,7 +216,7 @@
                 
                 cell.levelColor.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 30 - 80, 7.5, 80, 40);
                 cell.level.frame = CGRectMake([UIScreen mainScreen].bounds.size.width - 35 - 70, 17.5, 70, 20);
-                [cell setSelectionStyle:UITableViewCellSelectionStyleGray];
+                [cell setSelectionStyle:UITableViewCellSelectionStyleNone];
                 
                 cell.levelColor.image = [UIImage imageNamed:[[[self appDelegate].handler.homeData objectAtIndex:(indexPath.row )] objectForKey:@"Color"]];
                 cell.level.text = [[[self appDelegate].handler.homeData objectAtIndex:(indexPath.row )] objectForKey:@"Level"];
