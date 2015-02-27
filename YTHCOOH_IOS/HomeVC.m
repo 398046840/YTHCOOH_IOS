@@ -24,11 +24,6 @@
     
     [self appDelegate].homeVC = self;
     
-    //    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"LoginButton"] forBarMetrics:UIBarMetricsDefault];
-    //
-    //    if ([UIDevice currentDevice].systemVersion.floatValue < 7.0) {
-    //        [self.navigationController.navigationBar setTintColor:[UIColor colorWithRed:115.0/255.0 green:219.0/255.0 blue:17.0/255.0 alpha:1.0]];
-    //    }
     
     if ([self appDelegate].handler.homeData == nil) {
         [[self appDelegate].handler setHomeDataToNil];
@@ -41,14 +36,6 @@
         [[self appDelegate].handler setHomeDataToNil];
     }
     
-    
-    //    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
-    //    refresh.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
-    //    [refresh addTarget:self action:@selector(refreshCurrentDeviceDetail) forControlEvents:UIControlEventValueChanged];
-    //    self.refreshControl = refresh;
-    
-    //    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"启动" style:UIBarButtonItemStyleDone target:self action:@selector(launchPM10)];
-    //    [self.navigationController.navigationBar.]
     
 }
 
@@ -83,19 +70,6 @@
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];
 }
 
-//- (void)refreshCurrentDeviceDetail
-//{
-//    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"加载中..."];
-//
-//
-//    [self performSelector:@selector(refreshComplete) withObject:nil afterDelay:3];
-//}
-
-//- (void)refreshComplete
-//{
-//    [self.refreshControl endRefreshing];
-//    self.refreshControl.attributedTitle = [[NSAttributedString alloc] initWithString:@"下拉刷新"];
-//}
 
 - (void)launchPM10
 {
@@ -176,12 +150,6 @@
             
         }
         
-        
-        
-        
-        
-        
-        
         return cell;
     } else {
         
@@ -245,11 +213,6 @@
         }
         
         
-        
-        
-        
-        
-        
         return cell;
         
     }
@@ -289,90 +252,6 @@
 - (IBAction)clickLaunchPM10:(id)sender {
 }
 
-//- (void)setHomeDataToNil
-//{
-//    self.homeData = [[NSMutableArray alloc] init];
-//
-//    NSMutableDictionary *location = [[NSMutableDictionary alloc] init];
-//    [location setObject:@"您当前还没选择设备,请点击选择或添加设备" forKey:@"Location"];
-//    [self.homeData addObject:location];
-//
-//    NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
-//    [dic setObject:@"PM2.5:" forKey:@"Project"];
-//    [dic setObject:@"----ug/m³" forKey:@"Value"];
-//    [dic setObject:@"------" forKey:@"Level"];
-//    [dic setObject:@"LevelColor_Green" forKey:@"Color"];
-//    [self.homeData addObject:dic];
-//
-//    NSMutableDictionary *dic1 = [[NSMutableDictionary alloc] init];
-//    [dic1 setObject:@"PM10:" forKey:@"Project"];
-//    [dic1 setObject:@"----ug/m³" forKey:@"Value"];
-//    [dic1 setObject:@"------" forKey:@"Level"];
-//    [dic1 setObject:@"LevelColor_Green" forKey:@"Color"];
-//    [self.homeData addObject:dic1];
-//
-//    NSMutableDictionary *dic2 = [[NSMutableDictionary alloc] init];
-//    [dic2 setObject:@"甲醛:" forKey:@"Project"];
-//    [dic2 setObject:@"----mg/m³" forKey:@"Value"];
-//    [dic2 setObject:@"------" forKey:@"Level"];
-//    [dic2 setObject:@"LevelColor_Green" forKey:@"Color"];
-//    [self.homeData addObject:dic2];
-//
-//    NSMutableDictionary *dic3 = [[NSMutableDictionary alloc] init];
-//    [dic3 setObject:@"TOVC:" forKey:@"Project"];
-//    [dic3 setObject:@"----ug/m³" forKey:@"Value"];
-//    [dic3 setObject:@"------" forKey:@"Level"];
-//    [dic3 setObject:@"LevelColor_Green" forKey:@"Color"];
-//    [self.homeData addObject:dic3];
-//
-//    NSMutableDictionary *dic4 = [[NSMutableDictionary alloc] init];
-//    [dic4 setObject:@"温度:" forKey:@"Project"];
-//    [dic4 setObject:@"----℃" forKey:@"Value"];
-//    [dic4 setObject:@"------" forKey:@"Level"];
-//    [dic4 setObject:@"LevelColor_Green" forKey:@"Color"];
-//    [self.homeData addObject:dic4];
-//
-//    NSMutableDictionary *dic5 = [[NSMutableDictionary alloc] init];
-//    [dic5 setObject:@"湿度:" forKey:@"Project"];
-//    [dic5 setObject:@"----%" forKey:@"Value"];
-//    [dic5 setObject:@"------" forKey:@"Level"];
-//    [dic5 setObject:@"LevelColor_Green" forKey:@"Color"];
-//    [self.homeData addObject:dic5];
-//}
-
-/*
- // Override to support conditional editing of the table view.
- - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the specified item to be editable.
- return YES;
- }
- */
-
-/*
- // Override to support editing the table view.
- - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
- if (editingStyle == UITableViewCellEditingStyleDelete) {
- // Delete the row from the data source
- [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
- } else if (editingStyle == UITableViewCellEditingStyleInsert) {
- // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
- }
- }
- */
-
-/*
- // Override to support rearranging the table view.
- - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath {
- }
- */
-
-/*
- // Override to support conditional rearranging of the table view.
- - (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath {
- // Return NO if you do not want the item to be re-orderable.
- return YES;
- }
- */
 
 
 #pragma mark - Navigation

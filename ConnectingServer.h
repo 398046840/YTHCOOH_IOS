@@ -9,6 +9,19 @@
 #import <Foundation/Foundation.h>
 
 @interface ConnectingServer : NSObject
+
+@property (nonatomic, assign) BOOL isRefreshHomeData;
+@property (nonatomic, assign) BOOL isLoadingAllDevice;
+
+
+
+
+
+
+
+
+
+
 //注册
 - (void)registerWithUserID:(NSString *)userID andUserPassword:(NSString *)userPassword andViewController:(UIViewController *)viewController;
 //登录
@@ -34,13 +47,7 @@
 //PM10监听
 - (void)ControlPM10MonitorWithFlag:(BOOL)flag andViewController:(UIViewController *)viewController;
 
-
 - (UIColor *)whatTextColorWithValue:(NSString *)value inType:(NSString *)type;
-
-
-
-
-
 
 
 //获得空调遥控器学习标记

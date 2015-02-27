@@ -15,17 +15,17 @@
 #import "ConnectingServer.h"
 #import "AllMyDeviceVC.h"
 #import "RecordsetVC.h"
-#import "DealWithCurrentUserAllTempData.h"
+#import "TempData.h"
 #import "recordingsVC.h"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic, copy) NSString *currentUserID;
-@property (nonatomic, copy) NSString *currentDeviceMac;
-@property (nonatomic, copy) NSString *currentDeviceLocation;
-@property (nonatomic, copy) NSString *currentDeviceType;
+//@property (nonatomic, copy) NSString *currentUserID;
+//@property (nonatomic, copy) NSString *currentDeviceMac;
+//@property (nonatomic, copy) NSString *currentDeviceLocation;
+//@property (nonatomic, copy) NSString *currentDeviceType;
 
 
 
@@ -34,7 +34,7 @@
 @property (nonatomic, strong) HomeVC *homeVC;
 @property (nonatomic ,strong) recordingsVC *recordingsVC;
 
-@property (nonatomic, strong) DealWithCurrentUserAllTempData *handler;
+@property (nonatomic, strong) TempData *handler;
 
 @property (nonatomic, strong) NSMutableArray *allMyDevices;
 @property (nonatomic, strong) NSMutableDictionary *recordDataDic;
@@ -46,7 +46,7 @@
 - (BOOL)allInfomationPreparedWithUserID:(NSString *)userID andUserPassword:(NSString *)userPassword;
 - (void)logOut;
 
-- (void)refreshMyDevicesDataWithDic:(NSMutableArray *)dic;
+//- (void)refreshMyDevicesDataWithDic:(NSMutableArray *)dic;
 //- (void)refreshHomeDataWithDeviceMac:(NSString *)deviceMac;
 - (void)refreshRecordView;
 

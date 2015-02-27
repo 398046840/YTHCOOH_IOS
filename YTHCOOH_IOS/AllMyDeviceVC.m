@@ -25,14 +25,6 @@
     self.editButtonItem.title = @"删除";
     self.navigationItem.rightBarButtonItem = self.editButtonItem;
     
- //   self.allMyDevice.frame = CGRectMake(0, 0, [UIScreen mainScreen].bounds.size.width, [UIScreen mainScreen].bounds.size.height - 64 - 44);
-    
-  //  self.registerNewDeviceButton.frame = CGRectMake(0,  [UIScreen mainScreen].bounds.size.height - 64 - 44, [UIScreen mainScreen].bounds.size.width / 2, 44);
-  //  self.addNewDeviceButton.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2,  [UIScreen mainScreen].bounds.size.height - 64 - 44, [UIScreen mainScreen].bounds.size.width / 2, 44);
-
-    
-    
-    
     self.allMyDevice.delegate = self;
     self.allMyDevice.dataSource = self;
     [self.allMyDevice setSeparatorStyle:UITableViewCellSeparatorStyleNone];

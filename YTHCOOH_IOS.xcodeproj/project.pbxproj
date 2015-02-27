@@ -44,7 +44,7 @@
 		CE2C5CBE1A5E796800F8A03F /* RecordsetVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2C5CBD1A5E796800F8A03F /* RecordsetVC.m */; };
 		CE4FCBFF1A64C25600217E34 /* AddRegisteredDeviceVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4FCBFE1A64C25600217E34 /* AddRegisteredDeviceVC.m */; };
 		CE4FCC021A64C27D00217E34 /* AddUnregisteredDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = CE4FCC011A64C27D00217E34 /* AddUnregisteredDevice.m */; };
-		CE7DA42B1A6A2A07004FE746 /* DealWithCurrentUserAllTempData.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7DA42A1A6A2A07004FE746 /* DealWithCurrentUserAllTempData.m */; };
+		CE7DA42B1A6A2A07004FE746 /* TempData.m in Sources */ = {isa = PBXBuildFile; fileRef = CE7DA42A1A6A2A07004FE746 /* TempData.m */; };
 		CE83A6911A661C7B009E158B /* AFChart.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83A6901A661C7B009E158B /* AFChart.m */; };
 		CE83A6951A663830009E158B /* recordingsVC.m in Sources */ = {isa = PBXBuildFile; fileRef = CE83A6941A663830009E158B /* recordingsVC.m */; };
 		CE92B7E21A638E7300E1DE4E /* UIView+Toast.m in Sources */ = {isa = PBXBuildFile; fileRef = CE92B7E11A638E7300E1DE4E /* UIView+Toast.m */; };
@@ -168,16 +168,16 @@
 		CE2C5CB11A5E354E00F8A03F /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		CE2C5CB31A5E355700F8A03F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		CE2C5CB51A5E355F00F8A03F /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		CE2C5CB81A5E367100F8A03F /* ConnectingServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConnectingServer.h; sourceTree = "<group>"; };
-		CE2C5CB91A5E367100F8A03F /* ConnectingServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConnectingServer.m; sourceTree = "<group>"; };
+		CE2C5CB81A5E367100F8A03F /* ConnectingServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectingServer.h; path = ../ConnectingServer.h; sourceTree = "<group>"; };
+		CE2C5CB91A5E367100F8A03F /* ConnectingServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectingServer.m; path = ../ConnectingServer.m; sourceTree = "<group>"; };
 		CE2C5CBC1A5E796800F8A03F /* RecordsetVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordsetVC.h; sourceTree = "<group>"; };
 		CE2C5CBD1A5E796800F8A03F /* RecordsetVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordsetVC.m; sourceTree = "<group>"; };
 		CE4FCBFD1A64C25600217E34 /* AddRegisteredDeviceVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddRegisteredDeviceVC.h; sourceTree = "<group>"; };
 		CE4FCBFE1A64C25600217E34 /* AddRegisteredDeviceVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddRegisteredDeviceVC.m; sourceTree = "<group>"; };
 		CE4FCC001A64C27D00217E34 /* AddUnregisteredDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddUnregisteredDevice.h; sourceTree = "<group>"; };
 		CE4FCC011A64C27D00217E34 /* AddUnregisteredDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddUnregisteredDevice.m; sourceTree = "<group>"; };
-		CE7DA4291A6A2A07004FE746 /* DealWithCurrentUserAllTempData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DealWithCurrentUserAllTempData.h; sourceTree = "<group>"; };
-		CE7DA42A1A6A2A07004FE746 /* DealWithCurrentUserAllTempData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DealWithCurrentUserAllTempData.m; sourceTree = "<group>"; };
+		CE7DA4291A6A2A07004FE746 /* TempData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TempData.h; sourceTree = "<group>"; };
+		CE7DA42A1A6A2A07004FE746 /* TempData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TempData.m; sourceTree = "<group>"; };
 		CE83A68F1A661C7B009E158B /* AFChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFChart.h; sourceTree = "<group>"; };
 		CE83A6901A661C7B009E158B /* AFChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFChart.m; sourceTree = "<group>"; };
 		CE83A6931A663830009E158B /* recordingsVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = recordingsVC.h; sourceTree = "<group>"; };
@@ -324,6 +324,29 @@
 			name = socket;
 			sourceTree = "<group>";
 		};
+		9886DF5D1A9C6CEF008DFD10 /* PresentationLayer */ = {
+			isa = PBXGroup;
+			children = (
+				CE2C5C611A5E31A200F8A03F /* AppDelegate.h */,
+				CE2C5C621A5E31A800F8A03F /* AppDelegate.m */,
+				CE2C5C641A5E31B400F8A03F /* Main.storyboard */,
+				CE2C5C661A5E320B00F8A03F /* Login */,
+				CE2C5C671A5E322200F8A03F /* Home */,
+				CE2C5CBB1A5E791800F8A03F /* Recordset */,
+				CE2C5C691A5E323600F8A03F /* More */,
+			);
+			name = PresentationLayer;
+			sourceTree = "<group>";
+		};
+		9886DF5E1A9C6D5B008DFD10 /* PersistenceLayer */ = {
+			isa = PBXGroup;
+			children = (
+				CE2C5CB81A5E367100F8A03F /* ConnectingServer.h */,
+				CE2C5CB91A5E367100F8A03F /* ConnectingServer.m */,
+			);
+			name = PersistenceLayer;
+			sourceTree = "<group>";
+		};
 		CE2C5C591A5E316000F8A03F /* LIB */ = {
 			isa = PBXGroup;
 			children = (
@@ -458,10 +481,8 @@
 		CE2C5CB71A5E360C00F8A03F /* LogicalLayer */ = {
 			isa = PBXGroup;
 			children = (
-				CE2C5CB81A5E367100F8A03F /* ConnectingServer.h */,
-				CE2C5CB91A5E367100F8A03F /* ConnectingServer.m */,
-				CE7DA4291A6A2A07004FE746 /* DealWithCurrentUserAllTempData.h */,
-				CE7DA42A1A6A2A07004FE746 /* DealWithCurrentUserAllTempData.m */,
+				CE7DA4291A6A2A07004FE746 /* TempData.h */,
+				CE7DA42A1A6A2A07004FE746 /* TempData.m */,
 			);
 			name = LogicalLayer;
 			path = ..;
@@ -690,14 +711,9 @@
 		CEFEC1CE1A5E310E009F499D /* YTHCOOH_IOS */ = {
 			isa = PBXGroup;
 			children = (
-				CE2C5C611A5E31A200F8A03F /* AppDelegate.h */,
-				CE2C5C621A5E31A800F8A03F /* AppDelegate.m */,
-				CE2C5C641A5E31B400F8A03F /* Main.storyboard */,
-				CE2C5C661A5E320B00F8A03F /* Login */,
-				CE2C5C671A5E322200F8A03F /* Home */,
-				CE2C5CBB1A5E791800F8A03F /* Recordset */,
-				CE2C5C691A5E323600F8A03F /* More */,
+				9886DF5D1A9C6CEF008DFD10 /* PresentationLayer */,
 				CE2C5CB71A5E360C00F8A03F /* LogicalLayer */,
+				9886DF5E1A9C6D5B008DFD10 /* PersistenceLayer */,
 				CE2C5C881A5E330800F8A03F /* Images.xcassets */,
 				CE2C5C8A1A5E331700F8A03F /* LaunchScreen.xib */,
 				CEFEC1CF1A5E310E009F499D /* Supporting Files */,
@@ -837,7 +853,7 @@
 				98027FB31A624B4300EF96F0 /* BarChartCell.m in Sources */,
 				CE2C5CBE1A5E796800F8A03F /* RecordsetVC.m in Sources */,
 				CEAF1A871A676D4D00A94787 /* AboutUs.m in Sources */,
-				CE7DA42B1A6A2A07004FE746 /* DealWithCurrentUserAllTempData.m in Sources */,
+				CE7DA42B1A6A2A07004FE746 /* TempData.m in Sources */,
 				CED19F901A5FA2FB005204B6 /* MMProgressHUD+Class.m in Sources */,
 				CE2C5CA51A5E351800F8A03F /* NSAlert+MKNetworkKitAdditions.m in Sources */,
 				CE2C5CA81A5E351800F8A03F /* NSDictionary+RequestEncoding.m in Sources */,

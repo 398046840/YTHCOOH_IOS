@@ -30,7 +30,7 @@
 
 - (void)registerWithUserID:(NSString *)userID andUserPassword:(NSString *)userPassword andViewController:(RegisterNewID *)viewController
 {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidregister.jsp"];
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidregister.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:userID forKey:@"param1"];
@@ -38,7 +38,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kREGISTERSERVERPATH params:param httpMethod:@"POST"];
     
     
     
@@ -71,7 +71,7 @@
 
 - (void)loginWithUserID:(NSString *)userID andUserPassword:(NSString *)userPassword andViewController:(LoginVC *)viewController
 {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidlogin.jsp"];
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidlogin.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[NSString stringWithFormat:@"%@",userID] forKey:@"param1"];
@@ -79,7 +79,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kLOGINSEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -108,7 +108,7 @@
 
 - (void)retrievePasswordWithUserID:(NSString *)userID andDeviceMAC:(NSString *)deviceMAC andViewController:(RetrievePasswordVC *)viewController
 {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidverifypwd.jsp"];
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidverifypwd.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:userID forKey:@"param1"];
@@ -116,7 +116,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kRETRIEVESEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -146,14 +146,14 @@
 
 - (void)changeLocationWithDeviceMac:(NSString *)deviceMac andNewLocation:(NSString *)newLocation  andViewController:(LocationSettingVC *)viewController
 {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidchangge_equipment_location.jsp"];
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidchangge_equipment_location.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:deviceMac forKey:@"param1"];
     [param setValue:newLocation forKey:@"param2"];
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
-    MKNetworkOperation *operation = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *operation = [engine operationWithPath:kCHANGELOCATIONSEVERPATH params:param httpMethod:@"POST"];
     [operation addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         
         NSLog(@"%@", completedOperation.responseString);
@@ -174,14 +174,14 @@
 
 - (void)changePwdWithUserID:(NSString *)userID andNewPwd:(NSString *)newPwd andViewController:(PwdSettingVC *)viewController
 {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidchangpwd.jsp"];
+ //   NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidchangpwd.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:userID forKey:@"param1"];
     [param setValue:newPwd forKey:@"param2"];
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kCHANGEPASSWORDSEVERPATH params:param httpMethod:@"POST"];
     [op addCompletionHandler:^(MKNetworkOperation *completedOperation) {
         if ([completedOperation.responseString rangeOfString:@"fail"].location == NSNotFound) {
             [viewController changeSuccess];
@@ -197,7 +197,7 @@
 
 - (void)resetPasswordWithUserID:(NSString *)userID andNewPassword:(NSString *)newPassword andViewController:(ResetPasswordVC *)viewController
 {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidchangforgetpwd.jsp"];
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidchangforgetpwd.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:userID forKey:@"param1"];
@@ -205,7 +205,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kRESETPASSWORDSEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -234,14 +234,18 @@
 
 - (void)loadingAllMyDeviceWithCurrentUserIDAndViewController:(UIViewController *)viewController
 {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidreadmyeqlist.jsp"];
+    if (self.isLoadingAllDevice) {
+        return;
+    }
+    
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidreadmyeqlist.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentUserID forKey:@"param1"];
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kLOADINGALLDEVICESEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -326,6 +330,8 @@
             [viewController.view hideToastActivity];
         }
         
+        self.isLoadingAllDevice = NO;
+        
     } errorHandler:^(MKNetworkOperation *errorOP, NSError *err) {
         
         if (viewController != nil) {
@@ -333,9 +339,14 @@
             [viewController.view makeToast:@"加载失败,请稍后再试" duration:1.5 position:CSToastPositionCenter];
         }
         
+        self.isLoadingAllDevice = NO;
+        
     }];
     
     [engine enqueueOperation:op];
+    
+    self.isLoadingAllDevice = YES;
+    
     
     if (viewController != nil) {
         [viewController.view makeToastActivity];
@@ -344,18 +355,19 @@
 
 - (void)loadingDeviceRecordWithCurrentDeviceMACWithViewController:(UIViewController *)viewController
 {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidEnvironmentTrend.jsp"];
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidEnvironmentTrend.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentDeviceMac forKey:@"param1"];
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kLOADINGDEVICERECORDSEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
         
+        NSLog(@"%@",[self appDelegate].handler.currentDeviceMac);
         
         if ([operation.responseString rangeOfString:@"success"].location != NSNotFound) {
             
@@ -526,14 +538,18 @@
 
 - (void)loadingDeviceNewDetailWithDeviceMAC:(NSString *)deviceMac andDeviceType:(NSString *)type
 {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidrealtime_data_on_menuactivity.jsp"];
+    if (self.isRefreshHomeData) {
+        return;
+    }
+    
+ //   NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidrealtime_data_on_menuactivity.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:deviceMac forKey:@"param1"];
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kLOADINGDEVICENEWDETAILSEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -598,10 +614,6 @@
                 [tempDic setObject:[self whatTextColorWithValue:[responseArray objectAtIndex:4] inType:kHUMIDITY] forKey:@"TextColor"];
                 [finalArray addObject:tempDic];
                 
-//                tempDic = [[NSMutableDictionary alloc] init];
-//                [tempDic setObject:@"PM10" forKey:@"Project"];
-//                [tempDic setObject:[NSString stringWithFormat:@"%@",[responseArray objectAtIndex:8]] forKey:@"PM10"];
-//                [finalArray addObject:tempDic];
                 
                 
             } else if ([type isEqualToString:@"YT631"]) {
@@ -708,20 +720,21 @@
             
         }
         
-        
+        self.isRefreshHomeData = NO;
         
     } errorHandler:^(MKNetworkOperation *errorOP, NSError *err) {
         
-        
+        self.isRefreshHomeData = NO;
         
     }];
     
     [engine enqueueOperation:op];
+    self.isRefreshHomeData = YES;
 }
 
 - (void)deleteMyDeviceWithDeviceMAC:(NSString *)deviceMac inView:(AllMyDeviceVC *)view
 {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androiddelequipment.jsp"];
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androiddelequipment.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentUserID forKey:@"param1"];
@@ -731,7 +744,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kDELETEMYDEVICESEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -771,7 +784,7 @@
 
 - (void)addRegisteredDeviceWithCurrentUserIDAndPassword:(NSString *)passWord andDeviceMac:(NSString *)deviceMac inView:(AddRegisteredDeviceVC *)view
 {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidaddequipment.jsp"];
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidaddequipment.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentUserID forKey:@"param1"];
@@ -780,7 +793,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kADDREGISTEREDDEVICESERVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -812,7 +825,7 @@
 
 - (void)ControlPM10MonitorWithFlag:(BOOL)flag andViewController:(HomeVC *)viewController
 {
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidstart_pm_listenner.jsp"];
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidstart_pm_listenner.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     if (flag) {
@@ -827,7 +840,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kCONTROLPM10MONITORSERVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -869,7 +882,7 @@
         return;
     }
     
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidAllStudyFlag.jsp"];
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidAllStudyFlag.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentDeviceMac forKey:@"param1"];
@@ -877,7 +890,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kGETAIRCONDITIONALLSTUDYFLAGSEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -934,7 +947,7 @@
             break;
     }
     
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidStudy.jsp"];
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidStudy.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentDeviceMac forKey:@"param1"];
@@ -942,7 +955,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kAIRCONDITIONSTUDYSEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -996,7 +1009,7 @@
             break;
     }
     
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidTeleControl.jsp"];
+ //   NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidTeleControl.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentDeviceMac forKey:@"param2"];
@@ -1004,7 +1017,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kAIRCONDITIONCONTROLSEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -1030,7 +1043,7 @@
         return;
     }
     
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidairfindallstudy.jsp"];
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidairfindallstudy.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentDeviceMac forKey:@"param1"];
@@ -1038,7 +1051,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kGETAIRCLEARNERALLSTUDYFLAGSERVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -1094,7 +1107,7 @@
             break;
     }
     
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidAirStudy.jsp"];
+//   NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidAirStudy.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentDeviceMac forKey:@"param1"];
@@ -1102,7 +1115,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kAIRCLEANERSTUDYSEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -1155,7 +1168,7 @@
             break;
     }
     
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidTeleAirControl.jsp"];
+ //   NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidTeleAirControl.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentDeviceMac forKey:@"param2"];
@@ -1163,7 +1176,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kAIRCLEANERCONTROLSEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -1189,7 +1202,7 @@
         return;
     }
     
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidtvfindallstudy.jsp"];
+ //   NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidtvfindallstudy.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentDeviceMac forKey:@"param1"];
@@ -1197,7 +1210,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kGETTVALLSTUDYFLAGSEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -1254,7 +1267,7 @@
             break;
     }
     
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidTVStudy.jsp"];
+//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidTVStudy.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentDeviceMac forKey:@"param1"];
@@ -1262,7 +1275,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kTVSTUDYSERVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {
@@ -1312,7 +1325,7 @@
             break;
     }
     
-    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidTeleTVControl.jsp"];
+ //   NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidTeleTVControl.jsp"];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentDeviceMac forKey:@"param2"];
@@ -1320,7 +1333,7 @@
     
     MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
     
-    MKNetworkOperation *op = [engine operationWithPath:urlStr params:param httpMethod:@"POST"];
+    MKNetworkOperation *op = [engine operationWithPath:kTVCONTROLSEVERPATH params:param httpMethod:@"POST"];
     
     
     [op addCompletionHandler:^(MKNetworkOperation *operation) {

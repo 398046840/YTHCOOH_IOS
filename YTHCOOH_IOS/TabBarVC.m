@@ -22,7 +22,8 @@
     [self appDelegate].tabBar = self;
     self.selectedIndex = 0;
     
-    [self.tabBar setBackgroundImage:[UIImage imageNamed:@"LoginButton"]];
+
+//    [self.tabBar setBackgroundImage:[UIImage imageNamed:@"LoginButton"]];
 }
 
 - (void)didReceiveMemoryWarning {

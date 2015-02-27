@@ -25,7 +25,7 @@
     
     [self appDelegate].recordingsVC = self;
     
-    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"LoginButton"] forBarMetrics:UIBarMetricsDefault];
+//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"LoginButton"] forBarMetrics:UIBarMetricsDefault];
     
     [self.PM2 setHidden:YES];
     [self.PM10 setHidden:YES];
@@ -34,9 +34,9 @@
     [self.temperature setHidden:YES];
     [self.humidity setHidden:YES];
     
-    [self.BG1.layer setMasksToBounds:YES];
-    [self.BG1.layer setCornerRadius:8];
-    [self.BG1.layer setBorderWidth:0.4];
+//    [self.BG1.layer setMasksToBounds:YES];
+//    [self.BG1.layer setCornerRadius:8];
+//    [self.BG1.layer setBorderWidth:0.4];
     
     self.lastPage.backgroundColor = [UIColor clearColor];
     self.nextPage.backgroundColor = [UIColor clearColor];

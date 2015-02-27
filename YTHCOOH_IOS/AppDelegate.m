@@ -21,7 +21,7 @@
     [IQKeyboardManager sharedManager].enableAutoToolbar = NO;
     [IQKeyboardManager sharedManager].shouldResignOnTouchOutside = YES;
     
-    self.handler = [[DealWithCurrentUserAllTempData alloc] init];
+    self.handler = [[TempData alloc] init];
     self.allMyDevices = [[NSMutableArray alloc] init];
     
     

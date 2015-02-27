@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ConnectingServer.h"
 
-@interface DealWithCurrentUserAllTempData : NSObject
+@interface TempData : NSObject
 
 @property (nonatomic, copy) NSString *currentUserID;
 @property (nonatomic, copy) NSString *currentDeviceMac;
@@ -22,9 +22,7 @@
 
 
 @property (nonatomic, strong) NSTimer *timer;
-
 @property (nonatomic, strong) ConnectingServer *connectingServer;
-
 
 
 - (void)refreshMyDevicesDataWithDic:(NSMutableArray *)dic;

@@ -6,10 +6,10 @@
 //  Copyright (c) 2015年 AFABLE. All rights reserved.
 //
 
-#import "DealWithCurrentUserAllTempData.h"
+#import "TempData.h"
 #import "AppDelegate.h"
 
-@implementation DealWithCurrentUserAllTempData
+@implementation TempData
 
 - (id)init
 {
@@ -36,15 +36,14 @@
     if (dic != nil) {
         
         self.allMyDevices = dic;
-  //      [self refreshCurrentDeviceHomeDataAndRecord];
+        
         [[self appDelegate].allMyDevicwVC.allMyDevice reloadData];
         
     } else {
         
         self.allMyDevices = dic;
         
-   //     [self.homeVC setHomeDataToNil];
-     //   [self.homeVC.tableView reloadData];
+        
         
         [[self appDelegate].allMyDevicwVC.allMyDevice reloadData];
     }
@@ -58,16 +57,18 @@
 
 - (void)refreshHomeData
 {
-    if (self.allMyDevices.count != 0) {
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:kCURRENTDEVICEMAC] != nil) {
-            
-            [self.connectingServer loadingDeviceNewDetailWithDeviceMAC:[[NSUserDefaults standardUserDefaults] objectForKey:kCURRENTDEVICEMAC] andDeviceType:[[NSUserDefaults standardUserDefaults] objectForKey:kCURRENTDEVICETYPE]];
-        }
-    } else {
+    
         
-        [self.timer invalidate];
-        self.timer = nil;
-    }
+        
+            if ([[NSUserDefaults standardUserDefaults] objectForKey:kCURRENTDEVICEMAC] != nil) {
+                
+                [self.connectingServer loadingDeviceNewDetailWithDeviceMAC:[[NSUserDefaults standardUserDefaults] objectForKey:kCURRENTDEVICEMAC] andDeviceType:[[NSUserDefaults standardUserDefaults] objectForKey:kCURRENTDEVICETYPE]];
+            
+        } else {
+            
+            [self.timer invalidate];
+            self.timer = nil;
+        }
     
     
 }
@@ -131,161 +132,7 @@
     [self refreshHomeView];
 }
 
-//
-//- (void)refreshCurrentDeviceHomeDataAndRecord
-//{
-//    NSString *currentDevice = [[NSUserDefaults standardUserDefaults] objectForKey:kCURRENTDEVICEMAC];
-//    self.currentDeviceMac = currentDevice;
-//    
-//    for (NSMutableDictionary *dic in self.allMyDevices) {
-//        
-//        if ([[dic objectForKey:kDEVICEMAC] isEqualToString:currentDevice]) {
-//            
-//            NSMutableArray *newData = [[NSMutableArray alloc] init];
-//            
-//            NSMutableDictionary *location = [[NSMutableDictionary alloc] init];
-//            [location setObject:[NSString stringWithFormat:@"温馨提示: 您当前位置为%@",[dic objectForKey:KDEVICELOCATION]] forKey:@"Location"];
-//            [newData addObject:location];
-//            
-//            NSMutableDictionary *PM = [[NSMutableDictionary alloc] init];
-//            [PM setObject:@"PM2.5:" forKey:@"Project"];
-//            [PM setObject:[NSString stringWithFormat:@"%@ug/m³",[dic objectForKey:kPM]] forKey:@"Value"];
-//            [PM setObject:[NSString stringWithFormat:@"%@",[self whatLevelWithValue:[dic objectForKey:kPM] inType:kPM]] forKey:@"Level"];
-//            [PM setObject:[NSString stringWithFormat:@"%@",[self whatColorWithValue:[dic objectForKey:kPM] inType:kPM]] forKey:@"Color"];
-//            [PM setObject:[self whatTextColorWithValue:[dic objectForKey:kPM] inType:kPM] forKey:@"TextColor"];
-//            [newData addObject:PM];
-//            
-//            NSMutableDictionary *PM10 = [[NSMutableDictionary alloc] init];
-//            NSMutableDictionary *TVOC = [[NSMutableDictionary alloc] init];
-//            
-//            
-//            if ([[dic objectForKey:kDEVICETYPE] isEqualToString:@"YT133"]) {
-//                
-//                
-//                [PM10 setObject:@"PM10:" forKey:@"Project"];
-//                [PM10 setObject:@"----ug/m³" forKey:@"Value"];
-//                [PM10 setObject:@"------" forKey:@"Level"];
-//                [PM10 setObject:@"LevelColor_Green" forKey:@"Color"];
-//                [PM10 setObject:[UIColor blackColor] forKey:@"TextColor"];
-//                
-//                [TVOC setObject:@"TOVC:" forKey:@"Project"];
-//                [TVOC setObject:[NSString stringWithFormat:@"%@ug/m³",[dic objectForKey:KVOC]] forKey:@"Value"];
-//                [TVOC setObject:[NSString stringWithFormat:@"%@",[self whatLevelWithValue:[dic objectForKey:KVOC] inType:KVOC]] forKey:@"Level"];
-//                [TVOC setObject:[NSString stringWithFormat:@"%@",[self whatColorWithValue:[dic objectForKey:KVOC] inType:KVOC]] forKey:@"Color"];
-//                [TVOC setObject:[self whatTextColorWithValue:[dic objectForKey:KVOC] inType:KVOC] forKey:@"TextColor"];
-//                
-//                
-//                
-//            } else {
-//                
-//                
-//                [PM10 setObject:@"PM10:" forKey:@"Project"];
-//                [PM10 setObject:[NSString stringWithFormat:@"%@ug/m³",[dic objectForKey:KVOC]] forKey:@"Value"];
-//                [PM10 setObject:[NSString stringWithFormat:@"%@",[self whatLevelWithValue:[dic objectForKey:KVOC] inType:kPM10]] forKey:@"Level"];
-//                [PM10 setObject:[NSString stringWithFormat:@"%@",[self whatColorWithValue:[dic objectForKey:KVOC] inType:kPM10]] forKey:@"Color"];
-//                [PM10 setObject:[self whatTextColorWithValue:[dic objectForKey:KVOC] inType:kPM10] forKey:@"TextColor"];
-//                
-//                
-//                [TVOC setObject:@"TOVC:" forKey:@"Project"];
-//                [TVOC setObject:@"----ug/m³" forKey:@"Value"];
-//                [TVOC setObject:@"------" forKey:@"Level"];
-//                [TVOC setObject:@"LevelColor_Green" forKey:@"Color"];
-//                [TVOC setObject:[UIColor blackColor] forKey:@"TextColor"];
-//                
-//            }
-//            
-//            NSMutableDictionary *formaldehyde = [[NSMutableDictionary alloc] init];
-//            [formaldehyde setObject:@"甲醛:" forKey:@"Project"];
-//            [formaldehyde setObject:[NSString stringWithFormat:@"%@mg/m³",[dic objectForKey:kFORMALDEHYDE]] forKey:@"Value"];
-//            [formaldehyde setObject:[NSString stringWithFormat:@"%@",[self whatLevelWithValue:[dic objectForKey:kFORMALDEHYDE] inType:kFORMALDEHYDE]] forKey:@"Level"];
-//            [formaldehyde setObject:[NSString stringWithFormat:@"%@",[self whatColorWithValue:[dic objectForKey:kFORMALDEHYDE] inType:kFORMALDEHYDE]] forKey:@"Color"];
-//            [formaldehyde setObject:[self whatTextColorWithValue:[dic objectForKey:kFORMALDEHYDE] inType:kFORMALDEHYDE] forKey:@"TextColor"];
-//            
-//            [newData addObject:PM10];
-//            
-//            [newData addObject:formaldehyde];
-//            
-//            [newData addObject:TVOC];
-//            
-//            NSMutableDictionary *temperature = [[NSMutableDictionary alloc] init];
-//            [temperature setObject:@"温度:" forKey:@"Project"];
-//            [temperature setObject:[NSString stringWithFormat:@"%@℃",[dic objectForKey:kTEMPERATURE]] forKey:@"Value"];
-//            [temperature setObject:[NSString stringWithFormat:@"%@",[self whatLevelWithValue:[dic objectForKey:kTEMPERATURE] inType:kTEMPERATURE]] forKey:@"Level"];
-//            [temperature setObject:[NSString stringWithFormat:@"%@",[self whatColorWithValue:[dic objectForKey:kTEMPERATURE] inType:kTEMPERATURE]] forKey:@"Color"];
-//            [temperature setObject:[self whatTextColorWithValue:[dic objectForKey:kTEMPERATURE] inType:kTEMPERATURE] forKey:@"TextColor"];
-//            [newData addObject:temperature];
-//            
-//            NSMutableDictionary *humidity = [[NSMutableDictionary alloc] init];
-//            [humidity setObject:@"湿度:" forKey:@"Project"];
-//            [humidity setObject:[NSString stringWithFormat:@"%@%%",[dic objectForKey:kHUMIDITY]] forKey:@"Value"];
-//            [humidity setObject:[NSString stringWithFormat:@"%@",[self whatLevelWithValue:[dic objectForKey:kHUMIDITY] inType:kHUMIDITY]] forKey:@"Level"];
-//            [humidity setObject:[NSString stringWithFormat:@"%@",[self whatColorWithValue:[dic objectForKey:kHUMIDITY] inType:kHUMIDITY]] forKey:@"Color"];
-//            [humidity setObject:[self whatTextColorWithValue:[dic objectForKey:kHUMIDITY] inType:kHUMIDITY] forKey:@"TextColor"];
-//            [newData addObject:humidity];
-//            
-//            self.homeVC.homeData = newData;
-//            [self.homeVC.tableView reloadData];
-//            
-//        }
-//        
-//    }
-//    
-//    [self.connectingServer loadingDeviceRecordWithCurrentDeviceMAC];
-//}
-//
-//- (BOOL)allInfomationPreparedWithUserID:(NSString *)userID andUserPassword:(NSString *)userPassword
-//{
-//    
-//    if (![self checkTel:userID]) {
-//        
-//        return NO;
-//        
-//    }
-//    
-//    if (userPassword.length < 6 || userPassword.length > 16) {
-//        
-//        [self.window  makeToast:@"密码为6-16位数字或字母" duration:1.5 position:CSToastPositionTop];
-//        return NO;
-//    }
-//    
-//    return YES;
-//    
-//}
-//
-//- (BOOL)checkTel:(NSString *)str
-//
-//{
-//    
-//    if ([str length] == 0) {
-//        
-//        [self.window  makeToast:@"账号不能为空!" duration:1.5 position:CSToastPositionTop];
-//        return NO;
-//    }
-//    
-//    //1[0-9]{10}
-//    
-//    //^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$
-//    
-//    //    NSString *regex = @"[0-9]{11}";
-//    
-//    NSString *regex = @"^((13[0-9])|(147)|(15[^4,\\D])|(18[0,5-9]))\\d{8}$";
-//    
-//    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
-//    
-//    BOOL isMatch = [pred evaluateWithObject:str];
-//    
-//    if (!isMatch) {
-//        
-//        [self.window  makeToast:@"手机号为国内手机号码" duration:1.5 position:CSToastPositionTop];
-//        
-//        return NO;
-//        
-//    }
-//    
-//    return YES;
-//    
-//}
-//
+
 - (NSString *)whatLevelWithValue:(NSString *)value inType:(NSString *)type
 {
     
