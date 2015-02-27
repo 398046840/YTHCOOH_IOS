@@ -68,6 +68,7 @@
             
             [self.timer invalidate];
             self.timer = nil;
+            [self setHomeDataToNil];
         }
     
     

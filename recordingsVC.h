@@ -12,8 +12,10 @@
 @interface recordingsVC : UIViewController
 @property (strong, nonatomic) IBOutlet UIScrollView *scrollView;
 
+
 @property (strong, nonatomic) IBOutlet UIImageView *BG1;
 @property (strong, nonatomic) IBOutlet UILabel *location;
+@property (weak, nonatomic) IBOutlet UIImageView *line;
 
 @property (strong, nonatomic)  UILabel *currentFormaldehyde;
 @property (strong, nonatomic)  UILabel *currentPM2;
@@ -25,12 +27,12 @@
 @property (strong, nonatomic) IBOutlet UIButton *lastPage;
 @property (strong, nonatomic) IBOutlet UIButton *nextPage;
 
-@property (weak, nonatomic) IBOutlet UILabel *titleFormaldehyde;
-@property (weak, nonatomic) IBOutlet UILabel *titlePM2;
-@property (weak, nonatomic) IBOutlet UILabel *titlePM10;
-@property (weak, nonatomic) IBOutlet UILabel *titleTemp;
-@property (weak, nonatomic) IBOutlet UILabel *titleHumidity;
-@property (weak, nonatomic) IBOutlet UILabel *titleTVOC;
+@property (strong, nonatomic)  UILabel *titleFormaldehyde;
+@property (strong, nonatomic)  UILabel *titlePM2;
+@property (strong, nonatomic)  UILabel *titlePM10;
+@property (strong, nonatomic)  UILabel *titleTemp;
+@property (strong, nonatomic)  UILabel *titleHumidity;
+@property (strong, nonatomic)  UILabel *titleTVOC;
 
 @property (strong, nonatomic)  UIView *PM2;
 @property (strong, nonatomic)  UIView *PM10;

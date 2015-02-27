@@ -13,6 +13,8 @@
 #define CC_DEGREES_TO_RADIANS(__ANGLE__) ((__ANGLE__) * 0.01745329252f)
 #define KlineHeight 20
 #define KlineWidth 30
+#define TextFont 16
+#define CurrentValueX 75
 
 @interface recordingsVC ()
 
@@ -25,7 +27,7 @@
     
     [self appDelegate].recordingsVC = self;
     
-//    [self.navigationController.navigationBar setBackgroundImage:[UIImage imageNamed:@"LoginButton"] forBarMetrics:UIBarMetricsDefault];
+
     
     [self.PM2 setHidden:YES];
     [self.PM10 setHidden:YES];
@@ -34,9 +36,74 @@
     [self.temperature setHidden:YES];
     [self.humidity setHidden:YES];
     
-//    [self.BG1.layer setMasksToBounds:YES];
-//    [self.BG1.layer setCornerRadius:8];
-//    [self.BG1.layer setBorderWidth:0.4];
+    CGRect frame = CGRectMake(0, 0, 0, 0);
+    CGRect frame2 = CGRectMake(0, 0, 0, 0);
+    
+    self.titleFormaldehyde = [[UILabel alloc] initWithFrame:frame];
+    self.titlePM2 = [[UILabel alloc] initWithFrame:frame];
+    self.titlePM10 = [[UILabel alloc] initWithFrame:frame];
+    self.titleTemp = [[UILabel alloc] initWithFrame:frame];
+    self.titleHumidity = [[UILabel alloc] initWithFrame:frame];
+    self.titleTVOC = [[UILabel alloc] initWithFrame:frame];
+    
+    self.currentFormaldehyde = [[UILabel alloc] initWithFrame:frame2];
+    self.currentPM2 = [[UILabel alloc] initWithFrame:frame2];
+    self.currentPM10 = [[UILabel alloc] initWithFrame:frame2];
+    self.currentTemperature = [[UILabel alloc] initWithFrame:frame2];
+    self.currentHumidity = [[UILabel alloc] initWithFrame:frame2];
+    self.currentTVOC = [[UILabel alloc] initWithFrame:frame2];
+    
+    self.titleFormaldehyde.font = [UIFont systemFontOfSize:TextFont];
+    self.titleFormaldehyde.text = @"甲醛:";
+    
+    self.titlePM2.font = [UIFont systemFontOfSize:TextFont];
+    self.titlePM2.text = @"PM2:";
+    
+    self.titlePM10.font = [UIFont systemFontOfSize:TextFont];
+    self.titlePM10.text = @"PM10:";
+    
+    self.titleTemp.font = [UIFont systemFontOfSize:TextFont];
+    self.titleTemp.text = @"温度:";
+    
+    self.titleHumidity.font = [UIFont systemFontOfSize:TextFont];
+    self.titleHumidity.text = @"湿度:";
+    
+    self.titleTVOC.font = [UIFont systemFontOfSize:TextFont];
+    self.titleTVOC.text = @"TVOC:";
+    
+    self.currentFormaldehyde.font = [UIFont systemFontOfSize:TextFont];
+    self.currentPM2.font = [UIFont systemFontOfSize:TextFont];
+    self.currentPM10.font = [UIFont systemFontOfSize:TextFont];
+    self.currentTemperature.font = [UIFont systemFontOfSize:TextFont];
+    self.currentHumidity.font = [UIFont systemFontOfSize:TextFont];
+    self.currentTVOC.font = [UIFont systemFontOfSize:TextFont];
+    
+    [self.view addSubview:self.titleFormaldehyde];
+    [self.view addSubview:self.titlePM2];
+    [self.view addSubview:self.titlePM10];
+    [self.view addSubview:self.titleTemp];
+    [self.view addSubview:self.titleHumidity];
+    [self.view addSubview:self.titleTVOC];
+    [self.view addSubview:self.currentFormaldehyde];
+    [self.view addSubview:self.currentPM2];
+    [self.view addSubview:self.currentPM10];
+    [self.view addSubview:self.currentTemperature];
+    [self.view addSubview:self.currentHumidity];
+    [self.view addSubview:self.currentTVOC];
+    
+    [self.currentFormaldehyde setHidden:YES];
+    [self.currentPM2 setHidden:YES];
+    [self.currentPM10 setHidden:YES];
+    [self.currentTemperature setHidden:YES];
+    [self.currentHumidity setHidden:YES];
+    [self.currentTVOC setHidden:YES];
+
+    [self.titleFormaldehyde setHidden:YES];
+    [self.titlePM2 setHidden:YES];
+    [self.titlePM10 setHidden:YES];
+    [self.titleTemp setHidden:YES];
+    [self.titleHumidity setHidden:YES];
+    [self.titleTVOC setHidden:YES];
     
     self.lastPage.backgroundColor = [UIColor clearColor];
     self.nextPage.backgroundColor = [UIColor clearColor];
@@ -707,6 +774,59 @@
     
     
     [self.navigationItem.rightBarButtonItem setEnabled:YES];
+    
+    CGSize size1,size2;
+    
+    if (self.currentFormaldehyde.isHidden == NO) {
+        
+        size1 = [self.titleFormaldehyde.text sizeWithFont:[UIFont systemFontOfSize:TextFont]];
+        size2 = [self.currentFormaldehyde.text sizeWithFont:[UIFont systemFontOfSize:TextFont]];
+        self.titleFormaldehyde.frame = CGRectMake( 20 , self.line.frame.origin.y + 8, size1.width, size1.height);
+        self.currentFormaldehyde.frame = CGRectMake(CurrentValueX, self.line.frame.origin.y + 8, size2.width, size2.height);
+    }
+    
+    if (self.currentPM2.isHidden == NO) {
+        
+        size1 = [self.titlePM2.text sizeWithFont:[UIFont systemFontOfSize:TextFont]];
+        size2 = [self.currentPM2.text sizeWithFont:[UIFont systemFontOfSize:TextFont]];
+        self.titlePM2.frame = CGRectMake( [UIScreen mainScreen].bounds.size.width / 2 + 10 , self.line.frame.origin.y + 8, size1.width, size1.height);
+        self.currentPM2.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2 + 65, self.line.frame.origin.y + 8, size2.width, size2.height);
+    }
+    
+    if (self.currentTVOC.isHidden == NO) {
+        
+        size1 = [self.titleTVOC.text sizeWithFont:[UIFont systemFontOfSize:TextFont]];
+        size2 = [self.currentTVOC.text sizeWithFont:[UIFont systemFontOfSize:TextFont]];
+        self.titleTVOC.frame = CGRectMake( 20 , self.line.frame.origin.y + size1.height + 8, size1.width, size1.height);
+        self.currentTVOC.frame = CGRectMake(CurrentValueX, self.line.frame.origin.y + size1.height + 8, size2.width, size2.height);
+    }
+    
+    if (self.currentTemperature.isHidden == NO) {
+        
+        size1 = [self.titleTemp.text sizeWithFont:[UIFont systemFontOfSize:TextFont]];
+        size2 = [self.currentTemperature.text sizeWithFont:[UIFont systemFontOfSize:TextFont]];
+        self.titleTemp.frame = CGRectMake( [UIScreen mainScreen].bounds.size.width / 2 + 10 , self.line.frame.origin.y + size1.height + 8, size1.width, size1.height);
+        self.currentTemperature.frame = CGRectMake([UIScreen mainScreen].bounds.size.width / 2 + 65, self.line.frame.origin.y + size1.height + 8, size2.width, size2.height);
+    }
+    
+    if (self.currentHumidity.isHidden == NO) {
+        
+        size1 = [self.titleHumidity.text sizeWithFont:[UIFont systemFontOfSize:TextFont]];
+        size2 = [self.currentHumidity.text sizeWithFont:[UIFont systemFontOfSize:TextFont]];
+        self.titleHumidity.frame = CGRectMake( 20 , self.line.frame.origin.y + size1.height * 2 + 8 , size1.width, size1.height);
+        self.currentHumidity.frame = CGRectMake(CurrentValueX, self.titleHumidity.frame.origin.y , size2.width, size2.height);
+    }
+    
+    NSLog(@"%f,%f",self.titleTVOC.frame.size.width,self.titleHumidity.frame.size.height);
+    
+//    if (self.currentPM2.isHidden == NO) {
+//        
+//        size1 = [self.titlePM2.text sizeWithFont:[UIFont systemFontOfSize:TextFont]];
+//        size2 = [self.currentPM2.text sizeWithFont:[UIFont systemFontOfSize:TextFont]];
+//        self.titlePM2.frame = CGRectMake( [UIScreen mainScreen].bounds.size.width / 2 + 10 , self.line.frame.origin.y + 8, size1.width, size1.height);
+//        self.currentPM2.frame = CGRectMake(self.titlePM2.frame.origin.x + size1.width + 2, self.line.frame.origin.y + 8, size2.width, size2.height);
+//    }
+
     
     
 }
