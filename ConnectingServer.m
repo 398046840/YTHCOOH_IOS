@@ -255,10 +255,9 @@
         if ([operation.responseString rangeOfString:@"no]content"].location == NSNotFound) {
             
             NSString *responseStr = [operation responseString];
-            NSString *newStr = [responseStr stringByReplacingOccurrencesOfString:@"\r\n\r\n\r\n\r\n   " withString:@""];
-            NSString *newStr2 = [newStr stringByReplacingOccurrencesOfString:@"\r\n\r\n\  \r\n" withString:@""];
+            NSString *newStr = [responseStr stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
             
-            NSArray *responseArray = [newStr2 componentsSeparatedByString:@"]"];
+            NSArray *responseArray = [newStr componentsSeparatedByString:@"]"];
             
             NSMutableArray *finalArray = [[NSMutableArray alloc] init];
             
@@ -760,6 +759,10 @@
                 [self appDelegate].handler.currentDeviceLocation = nil ;
                 [self appDelegate].handler.currentDeviceMac = nil ;
                 [self appDelegate].handler.currentDeviceType = nil ;
+                
+                //停止定时器
+                [[self appDelegate].handler.timer invalidate];
+                [self appDelegate].handler.timer = nil;
             }
             [view deleteDeviceSuccess];
             [[self appDelegate].handler.connectingServer loadingAllMyDeviceWithCurrentUserIDAndViewController:nil];
