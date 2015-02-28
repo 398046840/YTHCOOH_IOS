@@ -25,6 +25,7 @@
     [self appDelegate].homeVC = self;
     
     
+    
     if ([self appDelegate].handler.homeData == nil) {
         [[self appDelegate].handler setHomeDataToNil];
     }

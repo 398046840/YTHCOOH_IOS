@@ -238,7 +238,7 @@
         return;
     }
     
-//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidreadmyeqlist.jsp"];
+    [self appDelegate].handler.allMyDevices = [[NSMutableArray alloc] init];
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentUserID forKey:@"param1"];

@@ -129,7 +129,7 @@
 
 - (IBAction)Login:(id)sender {
     
-    [self saveUserSetting];
+    
     
     if (![[self appDelegate] allInfomationPreparedWithUserID:self.userID.text andUserPassword:self.userPassword.text]) {
         
@@ -163,6 +163,16 @@
 - (void)loginSuccess
 {
     [MMProgressHUD dismissWithSuccess:@"登录成功!"];
+    //保存用户信息
+    if (![self.userID.text isEqualToString:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserID"]]) {
+        
+        [[NSUserDefaults standardUserDefaults] setObject:nil  forKey:kCURRENTDEVICEMAC];
+        [[NSUserDefaults standardUserDefaults] setObject:nil  forKey:kCURRENTDEVICETYPE];
+        [[NSUserDefaults standardUserDefaults] setObject:nil  forKey:kCURRENTDEVICELocation];
+    }
+    
+    
+    [self saveUserSetting];
     
     [self appDelegate].handler.currentUserID = self.userID.text;
     
