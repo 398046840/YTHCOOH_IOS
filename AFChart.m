@@ -86,7 +86,7 @@
         CGContextSelectFont(context, "Helvetica" ,11, kCGEncodingMacRoman);
         CGContextSetTextDrawingMode(context, kCGTextFill);
         CGContextShowTextAtPoint(context, kWIDTH * i + kGAPWITHRIGHT - 25, 15, [[tempArr objectAtIndex:0] UTF8String], strlen([[tempArr objectAtIndex:0] UTF8String]));
-        CGContextShowTextAtPoint(context, kWIDTH * i + kGAPWITHRIGHT - 15, 5, [tempStr UTF8String], strlen([tempStr UTF8String]));
+        CGContextShowTextAtPoint(context, kWIDTH * i + kGAPWITHRIGHT - 25, 5, [tempStr UTF8String], strlen([tempStr UTF8String]));
     }
     
     

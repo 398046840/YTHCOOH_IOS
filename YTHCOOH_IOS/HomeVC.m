@@ -212,6 +212,7 @@
                 cell.levelColor = nil;
                 cell.level = nil;
                 
+                cell.accessoryType = UITableViewCellAccessoryNone;
                 
             } else {
                 
@@ -223,9 +224,11 @@
                 cell.level.text = [[[self appDelegate].handler.homeData objectAtIndex:(indexPath.row )] objectForKey:@"Level"];
                 CGSize levelSize = [cell.level.text sizeWithFont:[UIFont systemFontOfSize:17]];
                 cell.level.frame = CGRectMake(cell.levelColor.frame.origin.x + cell.levelColor.frame.size.width / 2 - levelSize.width / 2 , 17, levelSize.width, levelSize.height);
+                
+                cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
             }
             
-            cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+            
         }
         
         
@@ -255,7 +258,7 @@
     if ( indexPath.row == 0) {
         
         [self performSegueWithIdentifier:@"AllMyDevice" sender:nil];
-    } else if ([[[[self appDelegate].handler.homeData objectAtIndex:indexPath.row] objectForKey:@"Project"] rangeOfString:@"PM"].location != NSNotFound) {
+    } else if ([[[[self appDelegate].handler.homeData objectAtIndex:indexPath.row] objectForKey:@"Project"] rangeOfString:@"PM2"].location != NSNotFound) {
         
         [self performSegueWithIdentifier:@"ShowPM" sender:[[self appDelegate].handler.homeData objectAtIndex:indexPath.row]];
     } else if ([[[[self appDelegate].handler.homeData objectAtIndex:indexPath.row] objectForKey:@"Project"] isEqualToString:@"甲醛:"] || [[[[self appDelegate].handler.homeData objectAtIndex:indexPath.row] objectForKey:@"Project"] isEqualToString:@"TVOC:"]) {

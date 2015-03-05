@@ -91,19 +91,19 @@
     [self.view addSubview:self.currentHumidity];
     [self.view addSubview:self.currentTVOC];
     
-    [self.currentFormaldehyde setHidden:YES];
-    [self.currentPM2 setHidden:YES];
-    [self.currentPM10 setHidden:YES];
-    [self.currentTemperature setHidden:YES];
-    [self.currentHumidity setHidden:YES];
-    [self.currentTVOC setHidden:YES];
-
-    [self.titleFormaldehyde setHidden:YES];
-    [self.titlePM2 setHidden:YES];
-    [self.titlePM10 setHidden:YES];
-    [self.titleTemp setHidden:YES];
-    [self.titleHumidity setHidden:YES];
-    [self.titleTVOC setHidden:YES];
+//    [self.currentFormaldehyde setHidden:YES];
+//    [self.currentPM2 setHidden:YES];
+//    [self.currentPM10 setHidden:YES];
+//    [self.currentTemperature setHidden:YES];
+//    [self.currentHumidity setHidden:YES];
+//    [self.currentTVOC setHidden:YES];
+//
+//    [self.titleFormaldehyde setHidden:YES];
+//    [self.titlePM2 setHidden:YES];
+//    [self.titlePM10 setHidden:YES];
+//    [self.titleTemp setHidden:YES];
+//    [self.titleHumidity setHidden:YES];
+//    [self.titleTVOC setHidden:YES];
     
     self.lastPage.backgroundColor = [UIColor clearColor];
     self.nextPage.backgroundColor = [UIColor clearColor];
@@ -173,18 +173,34 @@
     
     self.location.text = @"----";
     self.location.textColor = [UIColor blackColor];
+    
+    CGSize size = [@"----" sizeWithFont:[UIFont systemFontOfSize:TextFont]];
+    
     self.currentFormaldehyde.text = @"----";
     self.currentFormaldehyde.textColor = [UIColor blackColor];
+    self.currentFormaldehyde.frame = CGRectMake(self.currentFormaldehyde.frame.origin.x, self.currentFormaldehyde.frame.origin.y, size.width, size.height);
+    
     self.currentPM2.text = @"----";
     self.currentPM2.textColor = [UIColor blackColor];
+    self.currentPM2.frame = CGRectMake(self.currentPM2.frame.origin.x, self.currentPM2.frame.origin.y, size.width, size.height);
+    
     self.currentPM10.text = @"----";
     self.currentPM10.textColor = [UIColor blackColor];
+    self.currentPM10.frame = CGRectMake(self.currentPM10.frame.origin.x, self.currentPM10.frame.origin.y, size.width, size.height);
+    
     self.currentTemperature.text =@"----";
     self.currentTemperature.textColor = [UIColor blackColor];
+    self.currentTemperature.frame = CGRectMake(self.currentTemperature.frame.origin.x, self.currentTemperature.frame.origin.y, size.width, size.height);
+    
     self.currentHumidity.text = @"----";
     self.currentHumidity.textColor = [UIColor blackColor];
+    self.currentHumidity.frame = CGRectMake(self.currentHumidity.frame.origin.x, self.currentHumidity.frame.origin.y, size.width, size.height);
+    
     self.currentTVOC.text = @"----";
     self.currentTVOC.textColor = [UIColor blackColor];
+    self.currentTVOC.frame = CGRectMake(self.currentTVOC.frame.origin.x, self.currentTVOC.frame.origin.y, size.width, size.height);
+    
+    
     
     [self.formaldehyde setHidden:YES];
     [self.PM2 setHidden:YES];
