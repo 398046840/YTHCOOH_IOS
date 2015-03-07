@@ -58,3 +58,4 @@
 #define kGETTVALLSTUDYFLAGSEVERPATH @"/quan/androidtvfindallstudy.jsp"
 #define kTVSTUDYSERVERPATH @"/quan/androidTVStudy.jsp"
 #define kTVCONTROLSEVERPATH @"/quan/androidTeleTVControl.jsp"
+#define kGETDIYCONTROLList @"/quan/androidtelecontrolmenu.jsp"

@@ -1784,6 +1784,7 @@
                         <segue destination="slS-n1-99K" kind="show" identifier="airCondition" id="1CT-LN-x5w"/>
                         <segue destination="n6G-rW-4C0" kind="show" identifier="TV" id="1WT-Id-kdV"/>
                         <segue destination="yIK-MK-Eef" kind="show" identifier="airCleaner" id="IfX-3r-gZ3"/>
+                        <segue destination="eaP-Kx-ktA" kind="show" identifier="DIY" id="7PE-EC-Ihg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GQs-vG-Ss9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1988,7 +1989,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jld-LO-MVZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6834" y="97"/>
+            <point key="canvasLocation" x="6975" y="-219"/>
         </scene>
         <!--电视遥控器-->
         <scene sceneID="072-ck-bum">
@@ -2079,7 +2080,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="startStudy:" destination="yIK-MK-Eef" eventType="touchUpInside" id="6Jk-lZ-ITv"/>
                                     <action selector="startStudy:" destination="n6G-rW-4C0" eventType="touchUpInside" id="y9C-hb-g1l"/>
                                 </connections>
                             </button>
@@ -2147,7 +2147,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="D3w-6i-0Bd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6834" y="847"/>
+            <point key="canvasLocation" x="6975" y="487"/>
         </scene>
         <!--如何初始化设备-->
         <scene sceneID="rsX-VY-0KX">
@@ -3216,7 +3216,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lVP-xD-xnR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7612" y="96"/>
+            <point key="canvasLocation" x="7652" y="-219"/>
         </scene>
         <!--Study Remote Type Air Condition-->
         <scene sceneID="KbS-Ax-Gvx">
@@ -3315,7 +3315,154 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eeB-4p-zFU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="7612" y="856"/>
+            <point key="canvasLocation" x="8436" y="-219"/>
+        </scene>
+        <!--遥控器-->
+        <scene sceneID="5ks-Tj-W6b">
+            <objects>
+                <viewController id="eaP-Kx-ktA" customClass="DIYRemoteVC" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6jE-bY-avo"/>
+                        <viewControllerLayoutGuide type="bottom" id="IT5-Tq-8pF"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cbz-RK-biB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="miP-8i-jrb">
+                                <rect key="frame" x="333" y="136" width="87" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="87" id="JHh-yb-vae"/>
+                                    <constraint firstAttribute="height" constant="59" id="qeE-7M-cj5"/>
+                                </constraints>
+                                <state key="normal" image="television_shoutDown_no">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="television_shoutDown_press"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jf-n9-JzE">
+                                <rect key="frame" x="275" y="236" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="50" id="MGe-yS-JgU"/>
+                                    <constraint firstAttribute="height" constant="50" id="uvF-EB-SZ3"/>
+                                </constraints>
+                                <state key="normal" image="television_menu_ok">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oYD-81-mfV">
+                                <rect key="frame" x="243" y="193" width="115" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="Y7R-Om-uvB"/>
+                                    <constraint firstAttribute="width" constant="115" id="qe7-mc-KhB"/>
+                                </constraints>
+                                <state key="normal" image="television_chanle_up">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BkC-Fm-GPr">
+                                <rect key="frame" x="182" y="231" width="85" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="SNB-x5-gVF"/>
+                                    <constraint firstAttribute="height" constant="60" id="fyy-3x-4eN"/>
+                                </constraints>
+                                <state key="normal" image="television_vol_down">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mOH-uf-zFj">
+                                <rect key="frame" x="333" y="231" width="85" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="85" id="Wus-sW-P2Q"/>
+                                    <constraint firstAttribute="height" constant="60" id="nBk-8g-e3X"/>
+                                </constraints>
+                                <state key="normal" image="television_vol_up">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kat-uX-dA1">
+                                <rect key="frame" x="243" y="299" width="115" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="115" id="anc-0K-cGS"/>
+                                    <constraint firstAttribute="height" constant="30" id="h8w-Ab-5bv"/>
+                                </constraints>
+                                <state key="normal" image="television_chanle_down">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EC9-GR-icG">
+                                <rect key="frame" x="180" y="359" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="ldp-gF-H2f"/>
+                                    <constraint firstAttribute="width" constant="60" id="sIC-2y-Nv5"/>
+                                </constraints>
+                                <state key="normal" title="自定义1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zos-Ed-qrJ">
+                                <rect key="frame" x="360" y="359" width="60" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="HR5-Wh-HaQ"/>
+                                    <constraint firstAttribute="width" constant="60" id="geE-zv-FAx"/>
+                                </constraints>
+                                <state key="normal" title="自定义2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZKL-fN-oWe">
+                                <rect key="frame" x="16" y="403" width="568" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="E2V-u5-us4"/>
+                                </constraints>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="学习" image="air_condition_study" backgroundImage="LevelColor_White">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hkt-iH-p2n">
+                                <rect key="frame" x="180" y="136" width="87" height="59"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" id="GhM-1A-iaY"/>
+                                    <constraint firstAttribute="width" constant="87" id="LIo-dJ-uu8"/>
+                                </constraints>
+                                <state key="normal" image="television_launch_no">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted" image="television_launch_press"/>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94930215090000003" green="0.94788731500000001" blue="0.97260097290000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="oYD-81-mfV" secondAttribute="centerX" id="17V-07-ESt"/>
+                            <constraint firstItem="7jf-n9-JzE" firstAttribute="top" secondItem="6jE-bY-avo" secondAttribute="bottom" constant="172" id="1sn-76-bPo"/>
+                            <constraint firstAttribute="trailing" secondItem="ZKL-fN-oWe" secondAttribute="trailing" constant="16" id="3kk-ya-b3X"/>
+                            <constraint firstItem="mOH-uf-zFj" firstAttribute="top" secondItem="miP-8i-jrb" secondAttribute="bottom" constant="36" id="4pY-wp-XZo"/>
+                            <constraint firstAttribute="centerX" secondItem="7jf-n9-JzE" secondAttribute="centerX" id="9c4-XB-V2h"/>
+                            <constraint firstItem="7jf-n9-JzE" firstAttribute="top" secondItem="oYD-81-mfV" secondAttribute="bottom" constant="13" id="BID-0U-kV8"/>
+                            <constraint firstAttribute="centerX" secondItem="Kat-uX-dA1" secondAttribute="centerX" id="IL3-3D-cLg"/>
+                            <constraint firstItem="Zos-Ed-qrJ" firstAttribute="top" secondItem="mOH-uf-zFj" secondAttribute="bottom" constant="68" id="JEa-oE-DdE"/>
+                            <constraint firstItem="mOH-uf-zFj" firstAttribute="leading" secondItem="7jf-n9-JzE" secondAttribute="trailing" constant="8" id="LUv-hh-pkU"/>
+                            <constraint firstItem="EC9-GR-icG" firstAttribute="top" secondItem="BkC-Fm-GPr" secondAttribute="bottom" constant="68" id="S4E-YK-sg5"/>
+                            <constraint firstItem="BkC-Fm-GPr" firstAttribute="top" secondItem="hkt-iH-p2n" secondAttribute="bottom" constant="36" id="UOk-PI-TYi"/>
+                            <constraint firstItem="7jf-n9-JzE" firstAttribute="leading" secondItem="BkC-Fm-GPr" secondAttribute="trailing" constant="8" id="Uhg-B7-wzD"/>
+                            <constraint firstItem="Kat-uX-dA1" firstAttribute="top" secondItem="mOH-uf-zFj" secondAttribute="bottom" constant="8" id="YDg-bn-oTC"/>
+                            <constraint firstItem="mOH-uf-zFj" firstAttribute="top" secondItem="oYD-81-mfV" secondAttribute="bottom" constant="8" id="Z5A-oK-oSn"/>
+                            <constraint firstItem="ZKL-fN-oWe" firstAttribute="leading" secondItem="Cbz-RK-biB" secondAttribute="leading" constant="16" id="aRx-Ck-WhL"/>
+                            <constraint firstAttribute="centerX" secondItem="hkt-iH-p2n" secondAttribute="centerX" constant="76.5" id="dLV-lq-7b8"/>
+                            <constraint firstItem="ZKL-fN-oWe" firstAttribute="top" secondItem="Zos-Ed-qrJ" secondAttribute="bottom" constant="14" id="gL4-2l-Wkz"/>
+                            <constraint firstItem="BkC-Fm-GPr" firstAttribute="top" secondItem="oYD-81-mfV" secondAttribute="bottom" constant="8" id="lEE-mc-dPe"/>
+                            <constraint firstAttribute="centerX" secondItem="EC9-GR-icG" secondAttribute="centerX" constant="90" id="mHu-Fs-0uN"/>
+                            <constraint firstAttribute="centerX" secondItem="Zos-Ed-qrJ" secondAttribute="centerX" constant="-90" id="tL2-2c-xIW"/>
+                            <constraint firstAttribute="centerX" secondItem="miP-8i-jrb" secondAttribute="centerX" constant="-76.5" id="vWg-nR-RVf"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="遥控器" id="Gtp-jk-bHA"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QcX-N1-aMX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="7741" y="885"/>
         </scene>
     </scenes>
     <resources>
@@ -3366,6 +3513,6 @@
         <image name="television_vol_up" width="30" height="60"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="x9i-bJ-QCF"/>
+        <segue reference="KsD-1k-xD1"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -20,6 +20,7 @@
 #import "AirConditionRemoteVC.h"
 #import "LocationSettingVC.h"
 #import "PwdSettingVC.h"
+#import "ControllOtherDevice.h"
 
 @implementation ConnectingServer
 
@@ -354,7 +355,9 @@
 
 - (void)loadingDeviceRecordWithCurrentDeviceMACWithViewController:(UIViewController *)viewController
 {
-//    NSString *urlStr = [[NSString alloc] initWithFormat:@"/quan/androidEnvironmentTrend.jsp"];
+    if (self.isLoadRecord) {
+        return;
+    }
     
     NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
     [param setValue:[self appDelegate].handler.currentDeviceMac forKey:@"param1"];
@@ -490,7 +493,7 @@
             [self appDelegate].handler.recordDataDic = dataDic;
             [[self appDelegate] refreshRecordView];
             
-            
+            [self appDelegate].handler.shouldRefreshRecord = NO;
             
             
         } else {
@@ -511,6 +514,8 @@
         }
         
         
+        self.isLoadRecord = NO;
+        
     } errorHandler:^(MKNetworkOperation *errorOP, NSError *err) {
         
         
@@ -520,7 +525,7 @@
             [viewController.navigationItem.rightBarButtonItem setEnabled:YES];
         }
         
-        
+        self.isLoadRecord = NO;
     }];
     
     [engine enqueueOperation:op];
@@ -529,9 +534,9 @@
         [viewController.view makeToastActivity];
         [viewController.navigationItem.rightBarButtonItem setEnabled:NO];
         
-        
     }
     
+    self.isLoadRecord = YES;
     
 }
 
@@ -1354,6 +1359,40 @@
     
     [engine enqueueOperation:op];
     view.isRequesting = YES;
+}
+
+- (void)getDIYControlListWithCurrentDeviceMacInView:(ControllOtherDevice *)view
+{
+    NSMutableDictionary *param = [[NSMutableDictionary alloc] init];
+    [param setValue:[self appDelegate].handler.currentDeviceMac forKey:@"param1"];
+    
+    MKNetworkEngine *engine = [[MKNetworkEngine alloc] initWithHostName:kSERVERHOSTNAME customHeaderFields:nil];
+    
+    MKNetworkOperation *op = [engine operationWithPath:kGETDIYCONTROLList params:param httpMethod:@"POST"];
+    
+    
+    [op addCompletionHandler:^(MKNetworkOperation *operation) {
+        
+        NSString *responseStr = [operation responseString];
+        NSString *newStr = [responseStr stringByReplacingOccurrencesOfString:@"\r\n" withString:@""];
+        NSMutableArray *responseArray = [[NSMutableArray alloc] initWithArray:[newStr componentsSeparatedByString:@"."]];
+        
+        if ([responseArray count] > 5 || [[responseArray lastObject] isEqualToString:@""]) {
+            [responseArray removeLastObject];
+        }
+        
+        [self appDelegate].handler.DIYList = responseArray;
+        
+        [view.collectionView reloadData];
+        [view checkDIYListSuccess];
+        
+    } errorHandler:^(MKNetworkOperation *errorOP, NSError *err) {
+        
+        [view checkDIYListFail];
+        
+    }];
+    
+    [engine enqueueOperation:op];
 }
 
 - (NSString *)whatLevelWithValue:(NSString *)value inType:(NSString *)type

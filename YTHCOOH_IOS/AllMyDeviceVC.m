@@ -105,10 +105,13 @@
     
     [self.navigationController popViewControllerAnimated:YES];
     
+    //停止定时器
+    [[self appDelegate].handler.timer invalidate];
+    [self appDelegate].handler.timer = nil;
     
-    
+    [self appDelegate].handler.shouldRefreshRecord = YES;
     [[self appDelegate].handler refreshHomeDataWithCurrentDeviceMac];
-    [[self appDelegate].handler.connectingServer loadingDeviceRecordWithCurrentDeviceMACWithViewController:([self appDelegate].recordingsVC != nil)? [self appDelegate].recordingsVC : nil];
+
 }
 
 - (void)setEditing:(BOOL)editing animated:(BOOL)animated

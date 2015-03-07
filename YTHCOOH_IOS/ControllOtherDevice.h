@@ -13,4 +13,7 @@
 @property (strong, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @property (nonatomic, strong) NSMutableArray *dataArray;
+
+- (void)checkDIYListSuccess;
+- (void)checkDIYListFail;
 @end

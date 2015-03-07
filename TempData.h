@@ -17,13 +17,17 @@
 @property (nonatomic, copy) NSString *currentDeviceType;
 
 @property (nonatomic, strong) NSMutableArray *allMyDevices;
-@property (nonatomic, strong) NSMutableDictionary *recordDataDic;
 @property (nonatomic, strong) NSMutableArray *homeData;
+@property (nonatomic, strong) NSMutableDictionary *recordDataDic;
+@property (nonatomic, strong) NSArray *DIYList;
+
 
 
 @property (nonatomic, strong) NSTimer *timer;
 @property (nonatomic, strong) ConnectingServer *connectingServer;
 
+
+@property (nonatomic, assign) BOOL shouldRefreshRecord;
 
 - (void)refreshMyDevicesDataWithDic:(NSMutableArray *)dic;
 

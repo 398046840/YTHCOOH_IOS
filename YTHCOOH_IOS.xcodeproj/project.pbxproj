@@ -11,6 +11,7 @@
 		639A407C1A8204BD00D233E7 /* LocationSettingVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 639A407B1A8204BD00D233E7 /* LocationSettingVC.m */; };
 		98027FB01A624A5000EF96F0 /* BarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = 98027FAF1A624A5000EF96F0 /* BarChart.m */; };
 		98027FB31A624B4300EF96F0 /* BarChartCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 98027FB21A624B4300EF96F0 /* BarChartCell.m */; };
+		98059F061AAB441900121D29 /* DIYRemoteVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 98059F051AAB441900121D29 /* DIYRemoteVC.m */; };
 		980A02D91A84C8FB000EEC04 /* GCDAsyncSocket.m in Sources */ = {isa = PBXBuildFile; fileRef = 980A02D81A84C8FB000EEC04 /* GCDAsyncSocket.m */; };
 		CE1ED3AD1A789D4300689EC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE2C5C641A5E31B400F8A03F /* Main.storyboard */; };
 		CE2C5C5F1A5E316B00F8A03F /* EFCircularSlider.m in Sources */ = {isa = PBXBuildFile; fileRef = CE2C5C5C1A5E316B00F8A03F /* EFCircularSlider.m */; };
@@ -116,6 +117,8 @@
 		98027FAF1A624A5000EF96F0 /* BarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarChart.m; sourceTree = "<group>"; };
 		98027FB11A624B4300EF96F0 /* BarChartCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarChartCell.h; sourceTree = "<group>"; };
 		98027FB21A624B4300EF96F0 /* BarChartCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarChartCell.m; sourceTree = "<group>"; };
+		98059F041AAB441900121D29 /* DIYRemoteVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DIYRemoteVC.h; sourceTree = "<group>"; };
+		98059F051AAB441900121D29 /* DIYRemoteVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DIYRemoteVC.m; sourceTree = "<group>"; };
 		980A02D71A84C8FB000EEC04 /* GCDAsyncSocket.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCDAsyncSocket.h; sourceTree = "<group>"; };
 		980A02D81A84C8FB000EEC04 /* GCDAsyncSocket.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCDAsyncSocket.m; sourceTree = "<group>"; };
 		CE2C5C5B1A5E316B00F8A03F /* EFCircularSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EFCircularSlider.h; sourceTree = "<group>"; };
@@ -556,6 +559,8 @@
 				CEA9C37E1A7A2178005755B4 /* AirCleanerRemoteVC.m */,
 				CEA9C3801A7A218F005755B4 /* TVRemoteVC.h */,
 				CEA9C3811A7A218F005755B4 /* TVRemoteVC.m */,
+				98059F041AAB441900121D29 /* DIYRemoteVC.h */,
+				98059F051AAB441900121D29 /* DIYRemoteVC.m */,
 				CEA9C3831A7A4312005755B4 /* StudyRemoteTypeAirCondition.h */,
 				CEA9C3841A7A4312005755B4 /* StudyRemoteTypeAirCondition.m */,
 				CEA9C3861A7A551E005755B4 /* StudyRemoteTypeAirConditionView.h */,
@@ -876,6 +881,7 @@
 				CEA9C3851A7A4312005755B4 /* StudyRemoteTypeAirCondition.m in Sources */,
 				CE2C5CBA1A5E367100F8A03F /* ConnectingServer.m in Sources */,
 				CED19F731A5F87D8005204B6 /* IQTitleBarButtonItem.m in Sources */,
+				98059F061AAB441900121D29 /* DIYRemoteVC.m in Sources */,
 				CE2C5CAE1A5E351800F8A03F /* Reachability.m in Sources */,
 				CED19F8F1A5FA2FB005204B6 /* MMProgressHUD+Animations.m in Sources */,
 				CE2C5CA71A5E351800F8A03F /* NSDate+RFC1123.m in Sources */,

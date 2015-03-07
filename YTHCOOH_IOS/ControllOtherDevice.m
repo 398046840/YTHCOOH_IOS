@@ -9,6 +9,7 @@
 #import "ControllOtherDevice.h"
 #import "OtherDeviceCell.h"
 #import "AppDelegate.h"
+#import "DIYRemoteVC.h"
 
 @interface ControllOtherDevice ()
 
@@ -23,6 +24,15 @@
     self.collectionView.delegate = self;
     
     self.dataArray = [[NSMutableArray alloc] init];
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    [[self appDelegate].handler.connectingServer getDIYControlListWithCurrentDeviceMacInView:self];
+    
+    [self.view makeToastActivity];
     
 }
 
@@ -43,7 +53,17 @@
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
 {
-    return 4;
+    if ([[self appDelegate].handler.DIYList count] >= 5) {
+        
+        return [[self appDelegate].handler.DIYList count] + 3;
+        
+    } else {
+        
+        return [[self appDelegate].handler.DIYList count] + 3 + 1;
+        
+    }
+    
+    
 }
 
 -(UICollectionViewCell*)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -64,12 +84,18 @@
             cell.image.image = [UIImage imageNamed:@"television"];
             cell.subjectLabel.text = @"电视遥控器";
             break;
-        case 3:
-            cell.image.image = [UIImage imageNamed:@"DIY"];
-            cell.subjectLabel.text = @"自定义";
-            break;
             
         default:
+            cell.image.image = [UIImage imageNamed:@"DIY"];
+            if (indexPath.row < ([[self appDelegate].handler.DIYList count] + 3)) {
+                
+                cell.subjectLabel.text = [[self appDelegate].handler.DIYList objectAtIndex:(indexPath.row - 3)];
+    
+
+            } else {
+                cell.subjectLabel.text = @"添加自定义遥控器";
+            }
+        
             break;
     }
     
@@ -98,18 +124,38 @@
             break;
             
         default:
+            
+            if (indexPath.row < ([[self appDelegate].handler.DIYList count] + 3)) {
+                
+                [self performSegueWithIdentifier:@"DIY" sender:[[self appDelegate].handler.DIYList objectAtIndex:(indexPath.row - 3)]];
+                
+            } else {
+                
+            }
             break;
     }
 }
 
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
+#pragma mark - Navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    if ([segue.identifier isEqualToString:@"DIY"]) {
+        
+        DIYRemoteVC *VC = segue.destinationViewController;
+        VC.Name = (NSString *)sender;
+    }
 }
-*/
+
+
+- (void)checkDIYListSuccess
+{
+    [self.view hideToastActivity];
+}
+
+- (void)checkDIYListFail
+{
+    [self.view hideToastActivity];
+}
 
 @end

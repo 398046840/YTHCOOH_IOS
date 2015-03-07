@@ -12,6 +12,7 @@
 
 @property (nonatomic, assign) BOOL isRefreshHomeData;
 @property (nonatomic, assign) BOOL isLoadingAllDevice;
+@property (nonatomic, assign) BOOL isLoadRecord;
 
 
 
@@ -70,5 +71,8 @@
 - (void)TVStudyWithSubject:(int)subject inView:(UIViewController *)view;
 //空调控制
 - (void)TVControlWithSubject:(int)subject inView:(UIViewController *)view;
+
+//获得DIY遥控器列表
+- (void)getDIYControlListWithCurrentDeviceMacInView:(UIViewController *)view;
 
 @end

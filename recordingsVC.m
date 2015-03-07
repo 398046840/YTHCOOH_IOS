@@ -147,6 +147,12 @@
         [self.lastPage setEnabled:NO];
         [self.nextPage setEnabled:NO];
     }
+    
+    if ([self appDelegate].handler.shouldRefreshRecord) {
+        
+        [[self appDelegate].handler.connectingServer loadingDeviceRecordWithCurrentDeviceMACWithViewController:self];
+        
+    }
 }
 
 - (void)didReceiveMemoryWarning {

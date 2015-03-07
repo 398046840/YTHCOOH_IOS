@@ -157,6 +157,12 @@
         return;
     }
     
+    //如果是TV遥控,超过第六页返回
+    if ([self.type isEqualToString:@"TV"] && self.currentSubject >= 6) {
+        [self dismissViewControllerAnimated:YES completion: nil];
+        return;
+    }
+    
     if (self.currentSubject >= 7) {
         
         [self dismissViewControllerAnimated:YES completion: nil];
