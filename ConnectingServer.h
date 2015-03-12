@@ -20,7 +20,7 @@
 
 
 
-
+@property(nonatomic) BOOL sss;
 
 
 //注册
